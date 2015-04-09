@@ -2,10 +2,10 @@
 AIRS XML 2 iCarol Translation
 ===============================
 
-.. image:: https://img.shields.io/travis/lambacck/airs2icarol.svg
+.. .. image:: https://img.shields.io/travis/lambacck/airs2icarol.svg
         :target: https://travis-ci.org/lambacck/airs2icarol
 
-.. image:: https://img.shields.io/pypi/v/airs2icarol.svg
+.. .. image:: https://img.shields.io/pypi/v/airs2icarol.svg
         :target: https://pypi.python.org/pypi/airs2icarol
 
 
