@@ -1,0 +1,1137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Source SourceEntity="FindHelp (211 Ontario)" OriginTimestamp="2015-04-13T14:46:01.990" SoftwareVendor="CIOC" SoftwareVersion="3.6.2" TaxonomyVersion="2014-12-02T11:18:37" SchemaVersion="3.0">
+    <Agency RecordOwner="ZZZCIOC" YearInc="1900" LegalStatus="(50) Non Profit ; (60) Commercial ; (99) Unknown / No Service" ExcludeFromWebsite="true" ExcludeFromDirectory="true">
+        <Key>ZZZ99990</Key>
+        <Name>ORG_LEVEL_1, ORG_LEVEL_2, ORG_LEVEL_3, ORG_LEVEL_4, ORG_LEVEL_5</Name>
+        <AgencyDescription>AGENCY_DESCRIPTION</AgencyDescription>
+        <AKA>
+            <Name>ALT_ORG 1</Name>
+            <Confidential>false</Confidential>
+        </AKA>
+        <AKA>
+            <Name>ALT_ORG 2</Name>
+            <Confidential>false</Confidential>
+        </AKA>
+        <AKA>
+            <Name>ALT_ORG 3</Name>
+            <Confidential>false</Confidential>
+        </AKA>
+        <AKA>
+            <Name>FORMER_ORG 1</Name>
+            <Confidential>false</Confidential>
+            <Description>Former Name: 2001</Description>
+        </AKA>
+        <AKA>
+            <Name>FORMER_ORG 2</Name>
+            <Confidential>false</Confidential>
+            <Description>Former Name: 2008</Description>
+        </AKA>
+        <AKA>
+            <Name>FORMER_ORG 3</Name>
+            <Confidential>false</Confidential>
+            <Description>Former Name</Description>
+        </AKA>
+        <AKA>
+            <Name>LEGAL_ORG</Name>
+            <Confidential>false</Confidential>
+            <Description>Legal Name</Description>
+        </AKA>
+        <AgencyLocation ExcludeFromWebsite="true" ExcludeFromDirectory="true">
+            <Key>ZZZ99990</Key>
+            <Name>ORG_LEVEL_1, ORG_LEVEL_2, ORG_LEVEL_3, ORG_LEVEL_4, ORG_LEVEL_5</Name>
+            <SiteDescription>SITE_DESCRIPTION</SiteDescription>
+            <PhysicalAddress Confidential="false">
+                <PreAddressLine>SITE_BUILDING</PreAddressLine>
+                <Line1>SITE_STREET_NUMBER SITE_STREET Cres S</Line1>
+                <Line2>SITE_SUFFIX</Line2>
+                <City>SITE_CITY</City>
+                <State>ON</State>
+                <ZipCode>B2B 2B2</ZipCode>
+                <Country>SITE_COUNTRY</Country>
+            </PhysicalAddress>
+            <MailingAddress Confidential="false">
+                <PreAddressLine>c/o MAIL_CARE_OF, MAIL_BUILDING</PreAddressLine>
+                <Line1>Box PO_BOX_NO, MAIL_STREET_NUMBER MAIL_STREET Dr N</Line1>
+                <Line2>MAIL_SUFFIX</Line2>
+                <City>MAIL_CITY</City>
+                <State>ON</State>
+                <ZipCode>A1A 1A1</ZipCode>
+                <Country>MAIL_COUNTRY</Country>
+            </MailingAddress>
+            <CrossStreet>INTERSECTION</CrossStreet>
+            <LocatedInCommunity>Burlington</LocatedInCommunity>
+        </AgencyLocation>
+        <Phone TollFree="false" Confidential="false">
+            <PhoneNumber>OFFICE_PHONE</PhoneNumber>
+            <Description>Office</Description>
+            <Type>Voice</Type>
+        </Phone>
+        <Phone TollFree="false" Confidential="false">
+            <PhoneNumber>AFTER_HRS_PHONE</PhoneNumber>
+            <Description>After Hours</Description>
+            <Type>Voice</Type>
+        </Phone>
+        <Phone TollFree="false" Confidential="false">
+            <PhoneNumber>CRISIS_PHONE</PhoneNumber>
+            <Description>Crisis</Description>
+            <Type>Voice</Type>
+        </Phone>
+        <Phone TollFree="false" Confidential="false">
+            <PhoneNumber>FAX</PhoneNumber>
+            <Description>Fax</Description>
+            <Type>Fax</Type>
+        </Phone>
+        <Phone TollFree="false" Confidential="false">
+            <PhoneNumber>TDD_PHONE</PhoneNumber>
+            <Description>TTY/TDD</Description>
+            <Type>TTY/TDD</Type>
+        </Phone>
+        <Phone TollFree="true" Confidential="false">
+            <PhoneNumber>TOLL_FREE_PHONE</PhoneNumber>
+            <Description>Toll Free</Description>
+            <Type>Voice</Type>
+        </Phone>
+        <URL>
+            <Address>WWW_ADDRESS.net</Address>
+        </URL>
+        <Email>
+            <Address>E_MAIL@contact.org</Address>
+        </Email>
+        <Email>
+            <Address>E_MAIL2@contact.org</Address>
+        </Email>
+        <Contact Type="Alternate Executive">
+            <Title>EXEC_2_TITLE</Title>
+            <Name>Révérend EXEC_2_FIRSTNAME EXEC_2_LASTNAME EXEC_2_SUFFIX</Name>
+            <Email>
+                <Address>EXEC_2@contact.org</Address>
+            </Email>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>EXEC_2_PHONE1_NOTES (Answering Service) EXEC_2_PHONE1_NO option E2P1_OPT ext E2P1_EXT</PhoneNumber>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>EXEC_2_PHONE2_NOTES (Business) EXEC_2_PHONE2_NO option E2P2_OPT ext E2P2_EXT</PhoneNumber>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>EXEC_2_PHONE3_NOTES (Cell) EXEC_2_PHONE3_NO option E2P3_OPT ext E2P3_EXT</PhoneNumber>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>EXEC_2_FAX_NOTES EXEC_2_FAX_NO</PhoneNumber>
+                <Type>Fax</Type>
+            </Phone>
+        </Contact>
+        <Contact Type="Primary Executive">
+            <Title>EXEC_1_TITLE</Title>
+            <Name>Officer EXEC_1_FIRSTNAME EXEC_1_LASTNAME EXEC_1_SUFFIX</Name>
+            <Email>
+                <Address>EXEC_1@contact.org</Address>
+            </Email>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>EXEC_1_PHONE1_NOTES (Business) EXEC_1_PHONE1_NO option E1P1_OPT ext E1P1_EXT</PhoneNumber>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>EXEC_1_PHONE2_NOTES (Business) EXEC_1_PHONE2_NO option E1P2_OPT ext E1P2_EXT</PhoneNumber>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>EXEC_1_PHONE3_NOTES (Cell) EXEC_1_PHONE3_NO option E1P3_OPT ext E1P3_EXT</PhoneNumber>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>(please call first) EXEC_1_FAX_NOTES EXEC_1_FAX_NO</PhoneNumber>
+                <Type>Fax</Type>
+            </Phone>
+        </Contact>
+        <IRSStatus>N/A</IRSStatus>
+        <SourceOfFunds>Grants - FUNDING_NOTES_1 ; Fundraising ; FUNDING_NOTES_2</SourceOfFunds>
+        <Site ExcludeFromWebsite="true" ExcludeFromDirectory="true">
+            <Key>ZZZ99990</Key>
+            <Name>LOCATION_NAME A</Name>
+            <SiteDescription>SITE_DESCRIPTION</SiteDescription>
+            <AKA>
+                <Name>ALT_ORG 1</Name>
+                <Confidential>false</Confidential>
+            </AKA>
+            <AKA>
+                <Name>ALT_ORG 2</Name>
+                <Confidential>false</Confidential>
+            </AKA>
+            <AKA>
+                <Name>ALT_ORG 3</Name>
+                <Confidential>false</Confidential>
+            </AKA>
+            <AKA>
+                <Name>FORMER_ORG 1</Name>
+                <Confidential>false</Confidential>
+                <Description>Former Name: 2001</Description>
+            </AKA>
+            <AKA>
+                <Name>FORMER_ORG 2</Name>
+                <Confidential>false</Confidential>
+                <Description>Former Name: 2008</Description>
+            </AKA>
+            <AKA>
+                <Name>FORMER_ORG 3</Name>
+                <Confidential>false</Confidential>
+                <Description>Former Name</Description>
+            </AKA>
+            <AKA>
+                <Name>LEGAL_ORG</Name>
+                <Confidential>false</Confidential>
+                <Description>Legal Name</Description>
+            </AKA>
+            <PhysicalAddress Confidential="false">
+                <PreAddressLine>SITE_BUILDING</PreAddressLine>
+                <Line1>SITE_STREET_NUMBER SITE_STREET Cres S</Line1>
+                <Line2>SITE_SUFFIX</Line2>
+                <City>SITE_CITY</City>
+                <State>ON</State>
+                <ZipCode>B2B 2B2</ZipCode>
+                <Country>SITE_COUNTRY</Country>
+            </PhysicalAddress>
+            <MailingAddress Confidential="false">
+                <PreAddressLine>c/o MAIL_CARE_OF, MAIL_BUILDING</PreAddressLine>
+                <Line1>Box PO_BOX_NO, MAIL_STREET_NUMBER MAIL_STREET Dr N</Line1>
+                <Line2>MAIL_SUFFIX</Line2>
+                <City>MAIL_CITY</City>
+                <State>ON</State>
+                <ZipCode>A1A 1A1</ZipCode>
+                <Country>MAIL_COUNTRY</Country>
+            </MailingAddress>
+            <CrossStreet>INTERSECTION</CrossStreet>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>OFFICE_PHONE</PhoneNumber>
+                <Description>Office</Description>
+                <Type>Voice</Type>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>AFTER_HRS_PHONE</PhoneNumber>
+                <Description>After Hours</Description>
+                <Type>Voice</Type>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>CRISIS_PHONE</PhoneNumber>
+                <Description>Crisis</Description>
+                <Type>Voice</Type>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>FAX</PhoneNumber>
+                <Description>Fax</Description>
+                <Type>Fax</Type>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>TDD_PHONE</PhoneNumber>
+                <Description>TTY/TDD</Description>
+                <Type>TTY/TDD</Type>
+            </Phone>
+            <Phone TollFree="true" Confidential="false">
+                <PhoneNumber>TOLL_FREE_PHONE</PhoneNumber>
+                <Description>Toll Free</Description>
+                <Type>Voice</Type>
+            </Phone>
+            <URL>
+                <Address>WWW_ADDRESS.net</Address>
+            </URL>
+            <Email>
+                <Address>E_MAIL@contact.org</Address>
+            </Email>
+            <Email>
+                <Address>E_MAIL2@contact.org</Address>
+            </Email>
+            <Contact Type="Primary Contact">
+                <Title>CONTACT_1_TITLE</Title>
+                <Name>Mr CONTACT_1_FIRSTNAME CONTACT_1_LASTNAME CONTACT_1_SUFFFIX</Name>
+                <Email>
+                    <Address>CONTACT_1@contact.org</Address>
+                </Email>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CONTACT_1_PHONE1_NOTES (Cell) CONTACT_1_PHONE1_NO option C1P1_OPT ext C1P1_EXT</PhoneNumber>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CONTACT_1_PHONE2_NOTES (Answering Service) CONTACT_1_PHONE2_NO option C1P2_OPT ext C1P2_EXT</PhoneNumber>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CONTACT_1_PHONE3_NOTES (Business) CONTACT_1_PHONE3_NO option C1P3_OPT ext C1P3_EXT</PhoneNumber>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>(please call first) CONTACT_1_FAX_NOTES CONTACT_1_FAX_NO</PhoneNumber>
+                    <Type>Fax</Type>
+                </Phone>
+            </Contact>
+            <Contact Type="Alternate Contact">
+                <Title>CONTACT_2_TITLE</Title>
+                <Name>Mme CONTACT_2_FIRSTNAME CONTACT_2_LASTNAME CONTACT_2_SUFFFIX</Name>
+                <Email>
+                    <Address>CONTACT_2@contact.org</Address>
+                </Email>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CONTACT_2_PHONE1_NOTES (Pager) CONTACT_2_PHONE1_NO option C2P1_OPT ext C2P1_EXT</PhoneNumber>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CONTACT_2_PHONE2_NOTES (Residence) CONTACT_2_PHONE2_NO option C2P2_OPT ext C2P2_EXT</PhoneNumber>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CONTACT_2_PHONE3_NOTES (Business) CONTACT_2_PHONE3_NO option C2P3_OPT ext C2P3_EXT</PhoneNumber>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CONTACT_2_FAX_NOTES CONTACT_2_FAX_NO</PhoneNumber>
+                    <Type>Fax</Type>
+                </Phone>
+            </Contact>
+            <TimeOpen>
+                <Notes>HOURS
+Dates: DATES</Notes>
+            </TimeOpen>
+            <Languages>
+                <Name>English</Name>
+                <Notes>LANGUAGE_NOTES_1</Notes>
+            </Languages>
+            <Languages>
+                <Name>French</Name>
+            </Languages>
+            <Languages>
+                <Name>Other</Name>
+                <Notes>LANGUAGE_NOTES_2</Notes>
+            </Languages>
+            <DisabilitiesAccess>Fully Accessible - ACCESSIBILITY_TEST_NOTE_1 ; Partially Accessible - ACCESSIBILITY_TEST_NOTE_2 ; ACCESSIBILITY_TEST_NOTE_3</DisabilitiesAccess>
+            <PhysicalLocationDescription>SITE_LOCATION</PhysicalLocationDescription>
+            <SiteService>
+                <Name>SERVICE_NAME_LEVEL_1 B, SERVICE_NAME_LEVEL_2 B</Name>
+                <Key>ZZZ99992</Key>
+                <Description>DESCRIPTION SERVICE</Description>
+                <AKA>
+                    <Name>ALT_ORG 1 SERVICE</Name>
+                    <Confidential>false</Confidential>
+                </AKA>
+                <AKA>
+                    <Name>ALT_ORG 2 SERVICE</Name>
+                    <Confidential>false</Confidential>
+                </AKA>
+                <AKA>
+                    <Name>FORMER_ORG 1 SERVICE</Name>
+                    <Confidential>false</Confidential>
+                    <Description>Former Name</Description>
+                </AKA>
+                <AKA>
+                    <Name>FORMER_ORG 2 SERVICE</Name>
+                    <Confidential>false</Confidential>
+                    <Description>Former Name</Description>
+                </AKA>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>OFFICE_PHONE SERVICE</PhoneNumber>
+                    <Description>Office</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>AFTER_HRS_PHONE SERVICE</PhoneNumber>
+                    <Description>After Hours</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CRISIS_PHONE SERVICE</PhoneNumber>
+                    <Description>Crisis</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>FAX SERVICE</PhoneNumber>
+                    <Description>Fax</Description>
+                    <Type>Fax</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>TDD_PHONE SERVICE</PhoneNumber>
+                    <Description>TTY/TDD</Description>
+                    <Type>TTY/TDD</Type>
+                </Phone>
+                <Phone TollFree="true" Confidential="false">
+                    <PhoneNumber>TOLL_FREE_PHONE SERVICE</PhoneNumber>
+                    <Description>Toll Free</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <URL>
+                    <Address>www.WWW_ADDRESS_SERVICE.com</Address>
+                </URL>
+                <Email>
+                    <Address>E_MAIL_SERVICE@contact.org</Address>
+                </Email>
+                <Contact Type="Primary Contact">
+                    <Title>CONTACT_1_TITLE SERVICE</Title>
+                    <Name>Mr CONTACT_1_FIRSTNAME SERVICE CONTACT_1_LASTNAME SERVICE CONTACT_1_SUFFFIX SERVICE</Name>
+                    <Email>
+                        <Address>CONTACT_1@contact.org</Address>
+                    </Email>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_1_PHONE1_NOTES SERVICE (Cell) CONTACT_1_PHONE1_NO option C1P1_OPT ext C1P1_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_1_PHONE2_NOTES SERVICE (Answering Service) CONTACT_1_PHONE2_NO option C1P2_OPT ext C1P2_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_1_PHONE3_NOTES SERVICE (Business) CONTACT_1_PHONE3_NO option C1P3_OPT ext C1P3_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>(please call first) CONTACT_1_FAX_NOTES SERVICE CONTACT_1_FAX_NO</PhoneNumber>
+                        <Type>Fax</Type>
+                    </Phone>
+                </Contact>
+                <Contact Type="Alternate Contact">
+                    <Title>CONTACT_2_TITLE SERVICE</Title>
+                    <Name>Mme CONTACT_2_FIRSTNAME SERVICE CONTACT_2_LASTNAME SERVICE CONTACT_2_SUFFFIX SERVICE</Name>
+                    <Email>
+                        <Address>CONTACT_2_SERVICE@contact.org</Address>
+                    </Email>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_PHONE1_NOTES SERVICE (Pager) CONTACT_2_PHONE1_NO option C2P1_OPT ext C2P1_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_PHONE2_NOTES SERVICE (Residence) CONTACT_2_PHONE2_NO option C2P2_OPT ext C2P2_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_PHONE3_NOTES SERVICE (Business) CONTACT_2_PHONE3_NO option C2P3_OPT ext C2P3_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_FAX_NOTES CONTACT_2_FAX_NO</PhoneNumber>
+                        <Type>Fax</Type>
+                    </Phone>
+                </Contact>
+                <TimeOpen>
+                    <Notes>HOURS SERVICE
+Dates: DATES SERVICE
+Meetings: MEETINGS SERVICE</Notes>
+                </TimeOpen>
+                <Taxonomy>
+                    <Code>PL-7400.1500</Code>
+                </Taxonomy>
+                <Taxonomy>
+                    <Code>YO-3300.1300</Code>
+                </Taxonomy>
+                <Languages>
+                    <Name>Italian</Name>
+                </Languages>
+                <Languages>
+                    <Name>Other</Name>
+                    <Notes>LANGUAGE_NOTES_2 SERVICE</Notes>
+                </Languages>
+                <Languages>
+                    <Name>Portuguese</Name>
+                    <Notes>LANGUAGE_NOTES_1 SERVICE</Notes>
+                </Languages>
+                <GeographicAreaServed>
+                    <City>Halton Region</City>
+                    <City>Peel Region</City>
+                    <Description>Halton Region - AREAS_SERVED_TEST_NOTE_1 SERVICE ; Peel Region - AREAS_SERVED_TEST_NOTE_2 SERVICE ; AREAS_SERVED_TEST_NOTE_3 SERVICE</Description>
+                </GeographicAreaServed>
+                <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2013-03-15" DateLastVerified="2013-03-15" DateOfLastAction="2015-04-13">
+                    <Contact Type="Source">
+                        <Title>SOURCE_TITLE SERVICE</Title>
+                        <Name>SOURCE_NAME SERVICE</Name>
+                        <Email>
+                            <Address>SOURCE_EMAIL_SERVICE@contact.org</Address>
+                        </Email>
+                        <Phone TollFree="false" Confidential="false">
+                            <PhoneNumber>SOURCE_PHONE SERVICE</PhoneNumber>
+                            <Type>Voice</Type>
+                        </Phone>
+                        <Phone TollFree="false" Confidential="false">
+                            <PhoneNumber>SOURCE_FAX SERVICE</PhoneNumber>
+                            <Type>Fax</Type>
+                        </Phone>
+                    </Contact>
+                </ResourceInfo>
+                <ApplicationProcess>
+                    <Step>1</Step>
+                    <Description>APPLICATION SERVICE</Description>
+                </ApplicationProcess>
+                <FeeStructure>Membership - FEE_NOTES_1 SERVICE ; Deposit ; FEE_NOTES_2 SERVICE * Fee assistance available for FEE_ASSISTANCE_FOR SERVICE ; assistance is provided by FEE_ASSISTANCE_FROM SERVICE.</FeeStructure>
+                <OtherRequirements>ELIGIBILITY_NOTES SERVICE</OtherRequirements>
+                <AgeRequirements>Ages: 1 year(s) - 99 year(s)</AgeRequirements>
+                <ResidencyRequirements>BOUNDARIES SERVICE</ResidencyRequirements>
+                <InternalNote>PUBLIC_COMMENTS SERVICE
+
+COMMENTS SERVICE</InternalNote>
+            </SiteService>
+            <SiteService>
+                <Name>SERVICE_NAME_LEVEL_1 A, SERVICE_NAME_LEVEL_2 A</Name>
+                <Key>ZZZ99990</Key>
+                <Description>SERVICE_DESCRIPTION</Description>
+                <AKA>
+                    <Name>ALT_ORG 1</Name>
+                    <Confidential>false</Confidential>
+                </AKA>
+                <AKA>
+                    <Name>ALT_ORG 2</Name>
+                    <Confidential>false</Confidential>
+                </AKA>
+                <AKA>
+                    <Name>ALT_ORG 3</Name>
+                    <Confidential>false</Confidential>
+                </AKA>
+                <AKA>
+                    <Name>FORMER_ORG 1</Name>
+                    <Confidential>false</Confidential>
+                    <Description>Former Name: 2001</Description>
+                </AKA>
+                <AKA>
+                    <Name>FORMER_ORG 2</Name>
+                    <Confidential>false</Confidential>
+                    <Description>Former Name: 2008</Description>
+                </AKA>
+                <AKA>
+                    <Name>FORMER_ORG 3</Name>
+                    <Confidential>false</Confidential>
+                    <Description>Former Name</Description>
+                </AKA>
+                <AKA>
+                    <Name>LEGAL_ORG</Name>
+                    <Confidential>false</Confidential>
+                    <Description>Legal Name</Description>
+                </AKA>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>OFFICE_PHONE</PhoneNumber>
+                    <Description>Office</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>AFTER_HRS_PHONE</PhoneNumber>
+                    <Description>After Hours</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CRISIS_PHONE</PhoneNumber>
+                    <Description>Crisis</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>FAX</PhoneNumber>
+                    <Description>Fax</Description>
+                    <Type>Fax</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>TDD_PHONE</PhoneNumber>
+                    <Description>TTY/TDD</Description>
+                    <Type>TTY/TDD</Type>
+                </Phone>
+                <Phone TollFree="true" Confidential="false">
+                    <PhoneNumber>TOLL_FREE_PHONE</PhoneNumber>
+                    <Description>Toll Free</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <URL>
+                    <Address>WWW_ADDRESS.net</Address>
+                </URL>
+                <Email>
+                    <Address>E_MAIL@contact.org</Address>
+                </Email>
+                <Email>
+                    <Address>E_MAIL2@contact.org</Address>
+                </Email>
+                <Contact Type="Primary Contact">
+                    <Title>CONTACT_1_TITLE</Title>
+                    <Name>Mr CONTACT_1_FIRSTNAME CONTACT_1_LASTNAME CONTACT_1_SUFFFIX</Name>
+                    <Email>
+                        <Address>CONTACT_1@contact.org</Address>
+                    </Email>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_1_PHONE1_NOTES (Cell) CONTACT_1_PHONE1_NO option C1P1_OPT ext C1P1_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_1_PHONE2_NOTES (Answering Service) CONTACT_1_PHONE2_NO option C1P2_OPT ext C1P2_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_1_PHONE3_NOTES (Business) CONTACT_1_PHONE3_NO option C1P3_OPT ext C1P3_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>(please call first) CONTACT_1_FAX_NOTES CONTACT_1_FAX_NO</PhoneNumber>
+                        <Type>Fax</Type>
+                    </Phone>
+                </Contact>
+                <Contact Type="Alternate Contact">
+                    <Title>CONTACT_2_TITLE</Title>
+                    <Name>Mme CONTACT_2_FIRSTNAME CONTACT_2_LASTNAME CONTACT_2_SUFFFIX</Name>
+                    <Email>
+                        <Address>CONTACT_2@contact.org</Address>
+                    </Email>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_PHONE1_NOTES (Pager) CONTACT_2_PHONE1_NO option C2P1_OPT ext C2P1_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_PHONE2_NOTES (Residence) CONTACT_2_PHONE2_NO option C2P2_OPT ext C2P2_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_PHONE3_NOTES (Business) CONTACT_2_PHONE3_NO option C2P3_OPT ext C2P3_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_FAX_NOTES CONTACT_2_FAX_NO</PhoneNumber>
+                        <Type>Fax</Type>
+                    </Phone>
+                </Contact>
+                <TimeOpen>
+                    <Notes>HOURS
+Dates: DATES
+Meetings: MEETINGS</Notes>
+                </TimeOpen>
+                <Taxonomy>
+                    <Code>PL-7400.1500</Code>
+                </Taxonomy>
+                <Taxonomy>
+                    <Code>ND-6500.3000</Code>
+                    <Code>YO-3300.1300</Code>
+                </Taxonomy>
+                <Taxonomy>
+                    <Code>YO-1550.3300</Code>
+                    <Code>YO-3300.1300</Code>
+                </Taxonomy>
+                <Languages>
+                    <Name>English</Name>
+                    <Notes>LANGUAGE_NOTES_1</Notes>
+                </Languages>
+                <Languages>
+                    <Name>French</Name>
+                </Languages>
+                <Languages>
+                    <Name>Other</Name>
+                    <Notes>LANGUAGE_NOTES_2</Notes>
+                </Languages>
+                <GeographicAreaServed>
+                    <City>Nova Scotia</City>
+                    <City>New Brunswick</City>
+                    <City>British Columbia</City>
+                    <City>Thornhill</City>
+                    <Description>British Columbia - AREAS_SERVED_TEST_NOTE_1 ; New Brunswick - AREAS_SERVED_TEST_NOTE_2 ; Nova Scotia ; Thornhill ; AREAS_SERVED_TEST_NOTE_3</Description>
+                </GeographicAreaServed>
+                <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2013-03-08" DateLastVerified="2013-03-08" DateOfLastAction="2015-04-13">
+                    <Contact Type="Source">
+                        <Title>SOURCE_TITLE</Title>
+                        <Name>SOURCE_NAME</Name>
+                        <Email>
+                            <Address>SOURCE_EMAIL@contact.org</Address>
+                        </Email>
+                        <Phone TollFree="false" Confidential="false">
+                            <PhoneNumber>SOURCE_PHONE</PhoneNumber>
+                            <Type>Voice</Type>
+                        </Phone>
+                        <Phone TollFree="false" Confidential="false">
+                            <PhoneNumber>SOURCE_FAX</PhoneNumber>
+                            <Type>Fax</Type>
+                        </Phone>
+                    </Contact>
+                    <ResourceSpecialist>UPDATED_BY</ResourceSpecialist>
+                </ResourceInfo>
+                <ApplicationProcess>
+                    <Step>1</Step>
+                    <Description>APPLICATION</Description>
+                </ApplicationProcess>
+                <FeeStructure>Membership - FEE_NOTES_1 ; Program ; FEE_NOTES_2 * Fee assistance available for FEE_ASSISTANCE_FOR ; assistance is provided by FEE_ASSISTANCE_FROM.</FeeStructure>
+                <OtherRequirements>ELIGIBILITY_NOTES</OtherRequirements>
+                <AgeRequirements>Ages: 1 year(s) - 99 year(s)</AgeRequirements>
+                <ResidencyRequirements>BOUNDARIES</ResidencyRequirements>
+                <InternalNote>PUBLIC_COMMENTS
+
+COMMENTS</InternalNote>
+            </SiteService>
+            <SpatialLocation>
+                <Description>GEOCODE_NOTES</Description>
+                <Datum>WGS84</Datum>
+                <Latitude>+43.3793040</Latitude>
+                <Longitude>-79.7993360</Longitude>
+            </SpatialLocation>
+            <InternalNote>PUBLIC_COMMENTS
+
+COMMENTS</InternalNote>
+            <LocatedInCommunity>Burlington</LocatedInCommunity>
+        </Site>
+        <Site ExcludeFromWebsite="true" ExcludeFromDirectory="true">
+            <Key>ZZZ99991</Key>
+            <Name>LOCATION_NAME B</Name>
+            <SiteDescription>LOCATION_DESCRIPTION SITE</SiteDescription>
+            <AKA>
+                <Name>ALT_ORG 1 SITE</Name>
+                <Confidential>false</Confidential>
+            </AKA>
+            <AKA>
+                <Name>ALT_ORG 2 SITE</Name>
+                <Confidential>false</Confidential>
+            </AKA>
+            <AKA>
+                <Name>ALT_ORG 3 SITE</Name>
+                <Confidential>false</Confidential>
+            </AKA>
+            <AKA>
+                <Name>FORMER_ORG 1 SITE</Name>
+                <Confidential>false</Confidential>
+                <Description>Former Name: 2001</Description>
+            </AKA>
+            <AKA>
+                <Name>FORMER_ORG 2 SITE</Name>
+                <Confidential>false</Confidential>
+                <Description>Former Name: 2008</Description>
+            </AKA>
+            <AKA>
+                <Name>FORMER_ORG 3 SITE</Name>
+                <Confidential>false</Confidential>
+                <Description>Former Name</Description>
+            </AKA>
+            <AKA>
+                <Name>LEGAL_ORG SITE</Name>
+                <Confidential>false</Confidential>
+                <Description>Legal Name</Description>
+            </AKA>
+            <PhysicalAddress Confidential="false">
+                <PreAddressLine>SITE_BUILDING SITE</PreAddressLine>
+                <Line1>SITE_STREET_NUMBER SITE SITE_STREET SITE Hwy S</Line1>
+                <Line2>SITE_SUFFIX SITE</Line2>
+                <City>SITE_CITY SITE</City>
+                <State>ON</State>
+                <ZipCode>Q1Q 1Q1</ZipCode>
+                <Country>SITE_COUNTRY SITE</Country>
+            </PhysicalAddress>
+            <MailingAddress Confidential="false">
+                <PreAddressLine>c/o MAIL_CARE_OF SITE, MAIL_BUILDING SITE</PreAddressLine>
+                <Line1>Box PO_BOX_NO SITE, MAIL_STREET_NUMBER SITE MAIL_STREET SITE Dr N</Line1>
+                <Line2>MAIL_SUFFIX SITE</Line2>
+                <City>MAIL_CITY SITE</City>
+                <State>ON</State>
+                <ZipCode>A1A 1A1</ZipCode>
+                <Country>MAIL_COUNTRY SITE</Country>
+            </MailingAddress>
+            <CrossStreet>INTERSECTION SITE</CrossStreet>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>OFFICE_PHONE SITE</PhoneNumber>
+                <Description>Office</Description>
+                <Type>Voice</Type>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>AFTER_HRS_PHONE SITE</PhoneNumber>
+                <Description>After Hours</Description>
+                <Type>Voice</Type>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>CRISIS_PHONE SITE</PhoneNumber>
+                <Description>Crisis</Description>
+                <Type>Voice</Type>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>FAX SITE</PhoneNumber>
+                <Description>Fax</Description>
+                <Type>Fax</Type>
+            </Phone>
+            <Phone TollFree="false" Confidential="false">
+                <PhoneNumber>TDD_PHONE SITE</PhoneNumber>
+                <Description>TTY/TDD</Description>
+                <Type>TTY/TDD</Type>
+            </Phone>
+            <Phone TollFree="true" Confidential="false">
+                <PhoneNumber>TOLL_FREE_PHONE SITE</PhoneNumber>
+                <Description>Toll Free</Description>
+                <Type>Voice</Type>
+            </Phone>
+            <URL>
+                <Address>www.WWW_ADDRESS_SITE.com</Address>
+            </URL>
+            <Email>
+                <Address>E_MAIL_SITE@contact.org</Address>
+            </Email>
+            <Contact Type="Primary Contact">
+                <Title>CONTACT_1_TITLE SITE</Title>
+                <Name>Mr CONTACT_1_FIRSTNAME SITE CONTACT_1_LASTNAME SITE CONTACT_1_SUFFFIX SITE</Name>
+            </Contact>
+            <Contact Type="Alternate Contact">
+                <Name>Mme CONTACT_2_FIRSTNAME SITE CONTACT_2_LASTNAME SITE CONTACT_2_SUFFFIX SITE</Name>
+                <Email>
+                    <Address>CONTACT_2_SITE@contact.org</Address>
+                </Email>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CONTACT_2_PHONE1_NOTES SITE (Pager) CONTACT_2_PHONE1_NO option C2P1_OPT ext C2P1_EXT</PhoneNumber>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CONTACT_2_PHONE2_NOTES SITE (Residence) CONTACT_2_PHONE2_NO</PhoneNumber>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CONTACT_2_PHONE3_NOTES SITE (Answering Service) CONTACT_2_PHONE3_NO</PhoneNumber>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>(please call first) CONTACT_2_FAX_NOTES SITE CONTACT_2_FAX_NO</PhoneNumber>
+                    <Type>Fax</Type>
+                </Phone>
+            </Contact>
+            <TimeOpen>
+                <Notes>HOURS SITE
+Dates: DATES SITE</Notes>
+            </TimeOpen>
+            <Languages>
+                <Name>English</Name>
+                <Notes>LANGUAGE_NOTES_1 SITE</Notes>
+            </Languages>
+            <Languages>
+                <Name>French</Name>
+            </Languages>
+            <Languages>
+                <Name>Other</Name>
+                <Notes>LANGUAGE_NOTES_2 SITE</Notes>
+            </Languages>
+            <DisabilitiesAccess>Fully Accessible - ACCESSIBILITY_TEST_NOTE_1 SITE ; Partially Accessible - ACCESSIBILITY_TEST_NOTE_2 SITE ; ACCESSIBILITY_TEST_NOTE_3 SITE</DisabilitiesAccess>
+            <PhysicalLocationDescription>SITE_LOCATION SITE</PhysicalLocationDescription>
+            <SiteService>
+                <Name>SERVICE_NAME_LEVEL_1 A, SERVICE_NAME_LEVEL_2 A</Name>
+                <Key>ZZZ99990</Key>
+                <Description>SERVICE_DESCRIPTION</Description>
+                <AKA>
+                    <Name>ALT_ORG 1</Name>
+                    <Confidential>false</Confidential>
+                </AKA>
+                <AKA>
+                    <Name>ALT_ORG 2</Name>
+                    <Confidential>false</Confidential>
+                </AKA>
+                <AKA>
+                    <Name>ALT_ORG 3</Name>
+                    <Confidential>false</Confidential>
+                </AKA>
+                <AKA>
+                    <Name>FORMER_ORG 1</Name>
+                    <Confidential>false</Confidential>
+                    <Description>Former Name: 2001</Description>
+                </AKA>
+                <AKA>
+                    <Name>FORMER_ORG 2</Name>
+                    <Confidential>false</Confidential>
+                    <Description>Former Name: 2008</Description>
+                </AKA>
+                <AKA>
+                    <Name>FORMER_ORG 3</Name>
+                    <Confidential>false</Confidential>
+                    <Description>Former Name</Description>
+                </AKA>
+                <AKA>
+                    <Name>LEGAL_ORG</Name>
+                    <Confidential>false</Confidential>
+                    <Description>Legal Name</Description>
+                </AKA>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>OFFICE_PHONE</PhoneNumber>
+                    <Description>Office</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>AFTER_HRS_PHONE</PhoneNumber>
+                    <Description>After Hours</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CRISIS_PHONE</PhoneNumber>
+                    <Description>Crisis</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>FAX</PhoneNumber>
+                    <Description>Fax</Description>
+                    <Type>Fax</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>TDD_PHONE</PhoneNumber>
+                    <Description>TTY/TDD</Description>
+                    <Type>TTY/TDD</Type>
+                </Phone>
+                <Phone TollFree="true" Confidential="false">
+                    <PhoneNumber>TOLL_FREE_PHONE</PhoneNumber>
+                    <Description>Toll Free</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <URL>
+                    <Address>WWW_ADDRESS.net</Address>
+                </URL>
+                <Email>
+                    <Address>E_MAIL@contact.org</Address>
+                </Email>
+                <Email>
+                    <Address>E_MAIL2@contact.org</Address>
+                </Email>
+                <Contact Type="Primary Contact">
+                    <Title>CONTACT_1_TITLE</Title>
+                    <Name>Mr CONTACT_1_FIRSTNAME CONTACT_1_LASTNAME CONTACT_1_SUFFFIX</Name>
+                    <Email>
+                        <Address>CONTACT_1@contact.org</Address>
+                    </Email>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_1_PHONE1_NOTES (Cell) CONTACT_1_PHONE1_NO option C1P1_OPT ext C1P1_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_1_PHONE2_NOTES (Answering Service) CONTACT_1_PHONE2_NO option C1P2_OPT ext C1P2_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_1_PHONE3_NOTES (Business) CONTACT_1_PHONE3_NO option C1P3_OPT ext C1P3_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>(please call first) CONTACT_1_FAX_NOTES CONTACT_1_FAX_NO</PhoneNumber>
+                        <Type>Fax</Type>
+                    </Phone>
+                </Contact>
+                <Contact Type="Alternate Contact">
+                    <Title>CONTACT_2_TITLE</Title>
+                    <Name>Mme CONTACT_2_FIRSTNAME CONTACT_2_LASTNAME CONTACT_2_SUFFFIX</Name>
+                    <Email>
+                        <Address>CONTACT_2@contact.org</Address>
+                    </Email>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_PHONE1_NOTES (Pager) CONTACT_2_PHONE1_NO option C2P1_OPT ext C2P1_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_PHONE2_NOTES (Residence) CONTACT_2_PHONE2_NO option C2P2_OPT ext C2P2_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_PHONE3_NOTES (Business) CONTACT_2_PHONE3_NO option C2P3_OPT ext C2P3_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_FAX_NOTES CONTACT_2_FAX_NO</PhoneNumber>
+                        <Type>Fax</Type>
+                    </Phone>
+                </Contact>
+                <TimeOpen>
+                    <Notes>HOURS
+Dates: DATES
+Meetings: MEETINGS</Notes>
+                </TimeOpen>
+                <Taxonomy>
+                    <Code>PL-7400.1500</Code>
+                </Taxonomy>
+                <Taxonomy>
+                    <Code>ND-6500.3000</Code>
+                    <Code>YO-3300.1300</Code>
+                </Taxonomy>
+                <Taxonomy>
+                    <Code>YO-1550.3300</Code>
+                    <Code>YO-3300.1300</Code>
+                </Taxonomy>
+                <Languages>
+                    <Name>English</Name>
+                    <Notes>LANGUAGE_NOTES_1</Notes>
+                </Languages>
+                <Languages>
+                    <Name>French</Name>
+                </Languages>
+                <Languages>
+                    <Name>Other</Name>
+                    <Notes>LANGUAGE_NOTES_2</Notes>
+                </Languages>
+                <GeographicAreaServed>
+                    <City>Nova Scotia</City>
+                    <City>New Brunswick</City>
+                    <City>British Columbia</City>
+                    <City>Thornhill</City>
+                    <Description>British Columbia - AREAS_SERVED_TEST_NOTE_1 ; New Brunswick - AREAS_SERVED_TEST_NOTE_2 ; Nova Scotia ; Thornhill ; AREAS_SERVED_TEST_NOTE_3</Description>
+                </GeographicAreaServed>
+                <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2013-03-08" DateLastVerified="2013-03-08" DateOfLastAction="2015-04-13">
+                    <Contact Type="Source">
+                        <Title>SOURCE_TITLE</Title>
+                        <Name>SOURCE_NAME</Name>
+                        <Email>
+                            <Address>SOURCE_EMAIL@contact.org</Address>
+                        </Email>
+                        <Phone TollFree="false" Confidential="false">
+                            <PhoneNumber>SOURCE_PHONE</PhoneNumber>
+                            <Type>Voice</Type>
+                        </Phone>
+                        <Phone TollFree="false" Confidential="false">
+                            <PhoneNumber>SOURCE_FAX</PhoneNumber>
+                            <Type>Fax</Type>
+                        </Phone>
+                    </Contact>
+                    <ResourceSpecialist>UPDATED_BY</ResourceSpecialist>
+                </ResourceInfo>
+                <ApplicationProcess>
+                    <Step>1</Step>
+                    <Description>APPLICATION</Description>
+                </ApplicationProcess>
+                <FeeStructure>Membership - FEE_NOTES_1 ; Program ; FEE_NOTES_2 * Fee assistance available for FEE_ASSISTANCE_FOR ; assistance is provided by FEE_ASSISTANCE_FROM.</FeeStructure>
+                <OtherRequirements>ELIGIBILITY_NOTES</OtherRequirements>
+                <AgeRequirements>Ages: 1 year(s) - 99 year(s)</AgeRequirements>
+                <ResidencyRequirements>BOUNDARIES</ResidencyRequirements>
+                <InternalNote>PUBLIC_COMMENTS
+
+COMMENTS</InternalNote>
+            </SiteService>
+            <SiteService>
+                <Name>SERVICE_NAME_LEVEL_1 B, SERVICE_NAME_LEVEL_2 B</Name>
+                <Key>ZZZ99992</Key>
+                <Description>DESCRIPTION SERVICE</Description>
+                <AKA>
+                    <Name>ALT_ORG 1 SERVICE</Name>
+                    <Confidential>false</Confidential>
+                </AKA>
+                <AKA>
+                    <Name>ALT_ORG 2 SERVICE</Name>
+                    <Confidential>false</Confidential>
+                </AKA>
+                <AKA>
+                    <Name>FORMER_ORG 1 SERVICE</Name>
+                    <Confidential>false</Confidential>
+                    <Description>Former Name</Description>
+                </AKA>
+                <AKA>
+                    <Name>FORMER_ORG 2 SERVICE</Name>
+                    <Confidential>false</Confidential>
+                    <Description>Former Name</Description>
+                </AKA>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>OFFICE_PHONE SERVICE</PhoneNumber>
+                    <Description>Office</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>AFTER_HRS_PHONE SERVICE</PhoneNumber>
+                    <Description>After Hours</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>CRISIS_PHONE SERVICE</PhoneNumber>
+                    <Description>Crisis</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>FAX SERVICE</PhoneNumber>
+                    <Description>Fax</Description>
+                    <Type>Fax</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>TDD_PHONE SERVICE</PhoneNumber>
+                    <Description>TTY/TDD</Description>
+                    <Type>TTY/TDD</Type>
+                </Phone>
+                <Phone TollFree="true" Confidential="false">
+                    <PhoneNumber>TOLL_FREE_PHONE SERVICE</PhoneNumber>
+                    <Description>Toll Free</Description>
+                    <Type>Voice</Type>
+                </Phone>
+                <URL>
+                    <Address>www.WWW_ADDRESS_SERVICE.com</Address>
+                </URL>
+                <Email>
+                    <Address>E_MAIL_SERVICE@contact.org</Address>
+                </Email>
+                <Contact Type="Primary Contact">
+                    <Title>CONTACT_1_TITLE SERVICE</Title>
+                    <Name>Mr CONTACT_1_FIRSTNAME SERVICE CONTACT_1_LASTNAME SERVICE CONTACT_1_SUFFFIX SERVICE</Name>
+                    <Email>
+                        <Address>CONTACT_1@contact.org</Address>
+                    </Email>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_1_PHONE1_NOTES SERVICE (Cell) CONTACT_1_PHONE1_NO option C1P1_OPT ext C1P1_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_1_PHONE2_NOTES SERVICE (Answering Service) CONTACT_1_PHONE2_NO option C1P2_OPT ext C1P2_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_1_PHONE3_NOTES SERVICE (Business) CONTACT_1_PHONE3_NO option C1P3_OPT ext C1P3_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>(please call first) CONTACT_1_FAX_NOTES SERVICE CONTACT_1_FAX_NO</PhoneNumber>
+                        <Type>Fax</Type>
+                    </Phone>
+                </Contact>
+                <Contact Type="Alternate Contact">
+                    <Title>CONTACT_2_TITLE SERVICE</Title>
+                    <Name>Mme CONTACT_2_FIRSTNAME SERVICE CONTACT_2_LASTNAME SERVICE CONTACT_2_SUFFFIX SERVICE</Name>
+                    <Email>
+                        <Address>CONTACT_2_SERVICE@contact.org</Address>
+                    </Email>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_PHONE1_NOTES SERVICE (Pager) CONTACT_2_PHONE1_NO option C2P1_OPT ext C2P1_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_PHONE2_NOTES SERVICE (Residence) CONTACT_2_PHONE2_NO option C2P2_OPT ext C2P2_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_PHONE3_NOTES SERVICE (Business) CONTACT_2_PHONE3_NO option C2P3_OPT ext C2P3_EXT</PhoneNumber>
+                    </Phone>
+                    <Phone TollFree="false" Confidential="false">
+                        <PhoneNumber>CONTACT_2_FAX_NOTES CONTACT_2_FAX_NO</PhoneNumber>
+                        <Type>Fax</Type>
+                    </Phone>
+                </Contact>
+                <TimeOpen>
+                    <Notes>HOURS SERVICE
+Dates: DATES SERVICE
+Meetings: MEETINGS SERVICE</Notes>
+                </TimeOpen>
+                <Taxonomy>
+                    <Code>PL-7400.1500</Code>
+                </Taxonomy>
+                <Taxonomy>
+                    <Code>YO-3300.1300</Code>
+                </Taxonomy>
+                <Languages>
+                    <Name>Italian</Name>
+                </Languages>
+                <Languages>
+                    <Name>Other</Name>
+                    <Notes>LANGUAGE_NOTES_2 SERVICE</Notes>
+                </Languages>
+                <Languages>
+                    <Name>Portuguese</Name>
+                    <Notes>LANGUAGE_NOTES_1 SERVICE</Notes>
+                </Languages>
+                <GeographicAreaServed>
+                    <City>Halton Region</City>
+                    <City>Peel Region</City>
+                    <Description>Halton Region - AREAS_SERVED_TEST_NOTE_1 SERVICE ; Peel Region - AREAS_SERVED_TEST_NOTE_2 SERVICE ; AREAS_SERVED_TEST_NOTE_3 SERVICE</Description>
+                </GeographicAreaServed>
+                <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2013-03-15" DateLastVerified="2013-03-15" DateOfLastAction="2015-04-13">
+                    <Contact Type="Source">
+                        <Title>SOURCE_TITLE SERVICE</Title>
+                        <Name>SOURCE_NAME SERVICE</Name>
+                        <Email>
+                            <Address>SOURCE_EMAIL_SERVICE@contact.org</Address>
+                        </Email>
+                        <Phone TollFree="false" Confidential="false">
+                            <PhoneNumber>SOURCE_PHONE SERVICE</PhoneNumber>
+                            <Type>Voice</Type>
+                        </Phone>
+                        <Phone TollFree="false" Confidential="false">
+                            <PhoneNumber>SOURCE_FAX SERVICE</PhoneNumber>
+                            <Type>Fax</Type>
+                        </Phone>
+                    </Contact>
+                </ResourceInfo>
+                <ApplicationProcess>
+                    <Step>1</Step>
+                    <Description>APPLICATION SERVICE</Description>
+                </ApplicationProcess>
+                <FeeStructure>Membership - FEE_NOTES_1 SERVICE ; Deposit ; FEE_NOTES_2 SERVICE * Fee assistance available for FEE_ASSISTANCE_FOR SERVICE ; assistance is provided by FEE_ASSISTANCE_FROM SERVICE.</FeeStructure>
+                <OtherRequirements>ELIGIBILITY_NOTES SERVICE</OtherRequirements>
+                <AgeRequirements>Ages: 1 year(s) - 99 year(s)</AgeRequirements>
+                <ResidencyRequirements>BOUNDARIES SERVICE</ResidencyRequirements>
+                <InternalNote>PUBLIC_COMMENTS SERVICE
+
+COMMENTS SERVICE</InternalNote>
+            </SiteService>
+            <SpatialLocation>
+                <Description>GEOCODE_NOTES SITE</Description>
+                <Datum>WGS84</Datum>
+                <Latitude>+43.4093650</Latitude>
+                <Longitude>-79.7583090</Longitude>
+            </SpatialLocation>
+            <InternalNote>PUBLIC_COMMENTS SITE
+
+COMMENTS SITE</InternalNote>
+            <LocatedInCommunity>Burlington</LocatedInCommunity>
+        </Site>
+        <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2013-03-08" DateLastVerified="2013-03-08" DateOfLastAction="2015-04-13">
+            <Contact Type="Source">
+                <Title>SOURCE_TITLE</Title>
+                <Name>SOURCE_NAME</Name>
+                <Email>
+                    <Address>SOURCE_EMAIL@contact.org</Address>
+                </Email>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>SOURCE_PHONE</PhoneNumber>
+                    <Type>Voice</Type>
+                </Phone>
+                <Phone TollFree="false" Confidential="false">
+                    <PhoneNumber>SOURCE_FAX</PhoneNumber>
+                    <Type>Fax</Type>
+                </Phone>
+            </Contact>
+            <ResourceSpecialist>UPDATED_BY</ResourceSpecialist>
+        </ResourceInfo>
+        <InternalNote>PUBLIC_COMMENTS
+
+COMMENTS</InternalNote>
+    </Agency>
+</Source>
