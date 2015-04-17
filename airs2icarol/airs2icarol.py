@@ -70,8 +70,8 @@ def _convert_part(error_log, processed, iterable, root, tagname, culture=None, a
                 value = mapping.extractfn(element, joinstr=joinstr, _=_)
                 if value:
                     value = value.strip()
-                if value or True:
-                    yield [agencynum or '', key, record_type, unicode(mapping.FieldID), mapping.FieldName, culture, value or u'']
+                if value:
+                    yield [agencynum or '', key, record_type, unicode(mapping.FieldID), mapping.FieldName, culture, value]
 
             # NOTE this return must happen on the end event when element is root
             return
