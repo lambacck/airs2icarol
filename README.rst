@@ -17,4 +17,5 @@ A tool to convert AIRS XML export files into translation import files for iCarol
 Features
 --------
 
-* TODO
+* Convert an AIRS XML v3.0 export into an iCarol translation file.
+* Can use the command interface :code:`airs2icarol` or as a Python module

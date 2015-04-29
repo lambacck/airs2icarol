@@ -4,7 +4,7 @@ Installation
 
 At the command line::
 
-    $ easy_install airs2icarol
+    $ pip install airs2icarol
 
 Or, if you have virtualenvwrapper installed::
 
