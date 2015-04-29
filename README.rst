@@ -12,7 +12,7 @@ AIRS XML 2 iCarol Translation
 A tool to convert AIRS XML export files into translation import files for iCarol
 
 * Free software: Apache 2.0 License
-.. * Documentation: https://airs2icarol.readthedocs.org.
+* Documentation: https://airs2icarol.readthedocs.org.
 
 Features
 --------
