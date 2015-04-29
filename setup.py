@@ -24,7 +24,7 @@ test_requirements = [
 
 setup(
     name='airs2icarol',
-    version='0.1.0',
+    version='0.2.0',
     description="A tool to convert AIRS XML export files into translation import files for iCarol",
     long_description=readme + '\n\n' + history,
     author="Chris Lambacher",
