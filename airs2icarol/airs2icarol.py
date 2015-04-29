@@ -217,7 +217,7 @@ def _convert_part(error_log, processed, iterable, root, tagname, culture=None, a
                 # only output the row if we got a value
                 if value:
                     # agency key, record key, iCarol record type, iCarol Field ID, iCarol Field Name, culture code, value
-                    yield [agencynum or '', key, record_type, unicode(mapping.FieldID), mapping.FieldName, culture, value]
+                    yield [agencynum or '', key, record_type, unicode(mapping.FieldID), mapping.FieldName, culture, value.replace(u'\n', '\r\n')]
 
             # NOTE this return must happen on the end event when element is root
             return
@@ -388,6 +388,7 @@ _airs_type_mapping = {
     u'SiteService': [
         FieldMapping(1, u'AgencyNamePublic', partial(_xpath_join, 'Name/text()')),
         FieldMapping(4, u'AgencyNameAlternate', partial(_xpath_join, 'AKA/Name/text()')),
+        FieldMapping(5, u'AgencyDescription', partial(_xpath_join, 'Description/text()')),
 
         FieldMapping(46, u'PhoneTollFree', partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()')),
         FieldMapping(47, u'PhoneNumberHotline', partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Crisis"]/PhoneNumber/text()')),
