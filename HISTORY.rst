@@ -3,6 +3,12 @@
 History
 -------
 
+0.3.1 (2015-05-12)
+---------------------
+
+ * Add missing Hours field for service
+ * Include translations in sdist
+
 0.3.0 (2015-05-12)
 ---------------------
 

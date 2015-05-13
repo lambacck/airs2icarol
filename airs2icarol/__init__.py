@@ -2,6 +2,6 @@
 
 __author__ = 'Chris Lambacher'
 __email__ = 'chris@kateandchris.net'
-__version__ = '0.3.0'
+__version__ = '0.3.1'
 
 from .airs2icarol import *  # NOQA
