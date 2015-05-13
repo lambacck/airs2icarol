@@ -423,6 +423,7 @@ _airs_type_mapping = {
         FieldMapping(13, u'LanguagesOffered', _languages_offered),
         FieldMapping(81, u'InternalNotesForEditorsAndViewers', partial(_xpath_join, 'InternalNote/text()')),
         FieldMapping(11, u'Eligibility', _eligibility),
+        FieldMapping(34, u'HoursOfOperation', partial(_xpath_join, 'TimeOpen/Notes/text()')),
 
     ]
 
