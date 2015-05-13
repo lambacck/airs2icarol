@@ -298,6 +298,11 @@ def _eligibility(root_element, joinstr=u'; ', _=None):
 def _xpath_join(xpath, root_element, joinstr=u'; ', _=None):
     return joinstr.join(root_element.xpath(xpath)) or None
 
+
+def _addr_line_1_join(xpath, root_element, joinstr=u'; ', _=None):
+    return _xpath_join(xpath, root_element, '\n', _)
+
+
 _airs_type_mapping = {
     u'Source': [],
     u'Agency': [
@@ -330,14 +335,14 @@ _airs_type_mapping = {
         FieldMapping(62, u'MainContactPhoneNumber', partial(_xpath_join, 'Contact[@Type = "Primary Executive"]/Phone/PhoneNumber/text()')),
         FieldMapping(63, u'MainContactEmailAddress', partial(_xpath_join, 'Contact[@Type = "Primary Executive"]/Email/Address/text()')),
 
-        FieldMapping(25, u'PhysicalAddress1', partial(_xpath_join, 'AgencyLocation/PhysicalAddress/*[self::PreAddressLine or self::Line1]/text()')),
+        FieldMapping(25, u'PhysicalAddress1', partial(_addr_line_1_join, 'AgencyLocation/PhysicalAddress/*[self::PreAddressLine or self::Line1]/text()')),
         FieldMapping(26, u'PhysicalAddress2', partial(_xpath_join, 'AgencyLocation/PhysicalAddress/Line2/text()')),
         FieldMapping(28, u'PhysicalCity', partial(_xpath_join, 'AgencyLocation/PhysicalAddress/City/text()')),
         FieldMapping(30, u'PhysicalStateProvince', partial(_xpath_join, 'AgencyLocation/PhysicalAddress/State/text()')),
         FieldMapping(31, u'PhysicalCountry', partial(_xpath_join, 'AgencyLocation/PhysicalAddress/Country/text()')),
         FieldMapping(32, u'PhysicalPostalCode', partial(_xpath_join, 'AgencyLocation/PhysicalAddress/ZipCode/text()')),
 
-        FieldMapping(39, u'MailingAddress1', partial(_xpath_join, 'AgencyLocation/MailingAddress/*[self::PreAddressLine or self::Line1]/text()')),
+        FieldMapping(39, u'MailingAddress1', partial(_addr_line_1_join, 'AgencyLocation/MailingAddress/*[self::PreAddressLine or self::Line1]/text()')),
         FieldMapping(40, u'MailingAddress2', partial(_xpath_join, 'AgencyLocation/MailingAddress/Line2/text()')),
         FieldMapping(41, u'MailingCity', partial(_xpath_join, 'AgencyLocation/MailingAddress/City/text()')),
         FieldMapping(43, u'MailingPostalCode', partial(_xpath_join, 'AgencyLocation/MailingAddress/ZipCode/text()')),
@@ -347,14 +352,14 @@ _airs_type_mapping = {
     u'Site': [
         FieldMapping(1, u'AgencyNamePublic', partial(_xpath_join, 'Name/text()')),
         FieldMapping(4, u'AgencyNameAlternate', partial(_xpath_join, 'AKA/Name/text()')),
-        FieldMapping(25, u'PhysicalAddress1', partial(_xpath_join, 'PhysicalAddress/*[self::PreAddressLine or self::Line1]/text()')),
+        FieldMapping(25, u'PhysicalAddress1', partial(_addr_line_1_join, 'PhysicalAddress/*[self::PreAddressLine or self::Line1]/text()')),
         FieldMapping(26, u'PhysicalAddress2', partial(_xpath_join, 'PhysicalAddress/Line2/text()')),
         FieldMapping(28, u'PhysicalCity', partial(_xpath_join, 'PhysicalAddress/City/text()')),
         FieldMapping(30, u'PhysicalStateProvince', partial(_xpath_join, 'PhysicalAddress/State/text()')),
         FieldMapping(31, u'PhysicalCountry', partial(_xpath_join, 'PhysicalAddress/Country/text()')),
         FieldMapping(32, u'PhysicalPostalCode', partial(_xpath_join, 'PhysicalAddress/ZipCode/text()')),
 
-        FieldMapping(39, u'MailingAddress1', partial(_xpath_join, 'MailingAddress/*[self::PreAddressLine or self::Line1]/text()')),
+        FieldMapping(39, u'MailingAddress1', partial(_addr_line_1_join, 'MailingAddress/*[self::PreAddressLine or self::Line1]/text()')),
         FieldMapping(40, u'MailingAddress2', partial(_xpath_join, 'MailingAddress/Line2/text()')),
         FieldMapping(41, u'MailingCity', partial(_xpath_join, 'MailingAddress/City/text()')),
         FieldMapping(43, u'MailingPostalCode', partial(_xpath_join, 'MailingAddress/ZipCode/text()')),
