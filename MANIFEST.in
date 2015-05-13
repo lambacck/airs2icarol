@@ -5,7 +5,9 @@ include LICENSE
 include README.rst
 
 recursive-include tests *
+recursive-include airs2icarol/i18n *.py *.pot *.po *.mo
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
 
 recursive-include docs *.rst conf.py Makefile make.bat
+prune .git
