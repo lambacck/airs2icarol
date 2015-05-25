@@ -3,6 +3,12 @@
 History
 -------
 
+0.3.2 (2015-05-25)
+---------------------
+
+ * Handle contact XPATH depends on the language because the value for Type
+   attribute changes based on language
+
 0.3.1 (2015-05-12)
 ---------------------
 
