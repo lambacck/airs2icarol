@@ -303,6 +303,17 @@ def _addr_line_1_join(xpath, root_element, joinstr=u'; ', _=None):
     return _xpath_join(xpath, root_element, '\n', _)
 
 
+def _translated_type_xpath(contact_type, xpath, root_element, joinstr=u'; ', _=None):
+    new_contact_type = contact_type
+    if _ is not None:
+        new_contact_type = _(contact_type)
+    new_xpath = xpath % new_contact_type
+    return _xpath_join(new_xpath, root_element, joinstr, _)
+
+
+# make a fake translation fn _ to pick up translation strings that will be translated at run time
+_ = lambda x: x
+
 _airs_type_mapping = {
     u'Source': [],
     u'Agency': [
@@ -330,10 +341,10 @@ _airs_type_mapping = {
         FieldMapping(71, u'LastVerifiedByEmailAddress', partial(_xpath_join, 'ResourceInfo/Contact/Email/Address/text()')),
         FieldMapping(72, u'LastVerifiedByPhoneNumber', partial(_xpath_join, 'ResourceInfo/Contact/Phone[Type/text() = "Voice"]/PhoneNumber/text()')),
 
-        FieldMapping(61, u'MainContactTitle', partial(_xpath_join, 'Contact[@Type = "Primary Executive"]/Title/text()')),
-        FieldMapping(60, u'MainContactName', partial(_xpath_join, 'Contact[@Type = "Primary Executive"]/Name/text()')),
-        FieldMapping(62, u'MainContactPhoneNumber', partial(_xpath_join, 'Contact[@Type = "Primary Executive"]/Phone/PhoneNumber/text()')),
-        FieldMapping(63, u'MainContactEmailAddress', partial(_xpath_join, 'Contact[@Type = "Primary Executive"]/Email/Address/text()')),
+        FieldMapping(61, u'MainContactTitle', partial(_translated_type_xpath, _('Primary Executive'), 'Contact[@Type = "%s"]/Title/text()')),
+        FieldMapping(60, u'MainContactName', partial(_translated_type_xpath, _('Primary Executive'), 'Contact[@Type = "%s"]/Name/text()')),
+        FieldMapping(62, u'MainContactPhoneNumber', partial(_translated_type_xpath, _('Primary Executive'), 'Contact[@Type = "%s"]/Phone/PhoneNumber/text()')),
+        FieldMapping(63, u'MainContactEmailAddress', partial(_translated_type_xpath, _('Primary Executive'), 'Contact[@Type = "%s"]/Email/Address/text()')),
 
         FieldMapping(25, u'PhysicalAddress1', partial(_addr_line_1_join, 'AgencyLocation/PhysicalAddress/*[self::PreAddressLine or self::Line1]/text()')),
         FieldMapping(26, u'PhysicalAddress2', partial(_xpath_join, 'AgencyLocation/PhysicalAddress/Line2/text()')),
@@ -377,10 +388,10 @@ _airs_type_mapping = {
         FieldMapping(59, u'WebsiteAddress', partial(_xpath_join, 'URL/Address/text()')),
         FieldMapping(58, u'EmailAddressMain', partial(_xpath_join, 'Email/Address/text()')),
 
-        FieldMapping(61, u'MainContactTitle', partial(_xpath_join, 'Contact[@Type = "Primary Contact"]/Title/text()')),
-        FieldMapping(60, u'MainContactName', partial(_xpath_join, 'Contact[@Type = "Primary Contact"]/Name/text()')),
-        FieldMapping(62, u'MainContactPhoneNumber', partial(_xpath_join, 'Contact[@Type = "Primary Contact"]/Phone/PhoneNumber/text()')),
-        FieldMapping(63, u'MainContactEmailAddress', partial(_xpath_join, 'Contact[@Type = "Primary Contact"]/Email/Address/text()')),
+        FieldMapping(61, u'MainContactTitle', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Title/text()')),
+        FieldMapping(60, u'MainContactName', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Name/text()')),
+        FieldMapping(62, u'MainContactPhoneNumber', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Phone/PhoneNumber/text()')),
+        FieldMapping(63, u'MainContactEmailAddress', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Email/Address/text()')),
 
         FieldMapping(36, u'DisabilitiesAccess', partial(_xpath_join, 'DisabilitiesAccess/text()')),
         FieldMapping(34, u'HoursOfOperation', partial(_xpath_join, 'TimeOpen/Notes/text()')),
@@ -407,10 +418,10 @@ _airs_type_mapping = {
 
         FieldMapping(24, u'CoverageArea', partial(_xpath_join, 'GeographicAreaServed/Description/text()')),
 
-        FieldMapping(61, u'MainContactTitle', partial(_xpath_join, 'Contact[@Type = "Primary Contact"]/Title/text()')),
-        FieldMapping(60, u'MainContactName', partial(_xpath_join, 'Contact[@Type = "Primary Contact"]/Name/text()')),
-        FieldMapping(62, u'MainContactPhoneNumber', partial(_xpath_join, 'Contact[@Type = "Primary Contact"]/Phone/PhoneNumber/text()')),
-        FieldMapping(63, u'MainContactEmailAddress', partial(_xpath_join, 'Contact[@Type = "Primary Contact"]/Email/Address/text()')),
+        FieldMapping(61, u'MainContactTitle', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Title/text()')),
+        FieldMapping(60, u'MainContactName', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Name/text()')),
+        FieldMapping(62, u'MainContactPhoneNumber', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Phone/PhoneNumber/text()')),
+        FieldMapping(63, u'MainContactEmailAddress', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Email/Address/text()')),
 
         FieldMapping(68, u'LastVerifiedOn', partial(_xpath_join, 'ResourceInfo/@DateLastVerified')),
         FieldMapping(69, u'LastVerifiedByName', partial(_xpath_join, 'ResourceInfo/Contact/Name/text()')),
@@ -429,6 +440,7 @@ _airs_type_mapping = {
 
 
 }
+del _
 
 _tag_to_type_map = {
     'Agency': 'AGENCY', 'Site': 'SITE', 'SiteService': 'PROGRAM'

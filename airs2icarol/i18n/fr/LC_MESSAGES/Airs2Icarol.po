@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: airs2icarol 0.1.0\n"
 "Report-Msgid-Bugs-To: chris@kclsoftware.com\n"
-"POT-Creation-Date: 2015-04-16 22:35-0400\n"
+"POT-Creation-Date: 2015-05-25 11:55-0400\n"
 "PO-Revision-Date: 2015-04-29 15:54-0400\n"
 "Last-Translator: Christopher Lambacher <chris@kclsoftware.com>\n"
 "Language-Team: Chris Lambacher <chris@kclsoftware.com>\n"
@@ -18,23 +18,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: airs2icarol/airs2icarol.py:68
+#: airs2icarol/airs2icarol.py:207
 msgid "; "
 msgstr " ; "
 
-#: airs2icarol/airs2icarol.py:123
+#: airs2icarol/airs2icarol.py:250
 msgid "Cross Street: "
 msgstr "Intersection : "
 
-#: airs2icarol/airs2icarol.py:141
+#: airs2icarol/airs2icarol.py:268
 msgid " - "
 msgstr " - "
 
-#: airs2icarol/airs2icarol.py:149
+#: airs2icarol/airs2icarol.py:276
 msgid "Age Requirements: "
 msgstr "Conditions d'âge : "
 
-#: airs2icarol/airs2icarol.py:150
+#: airs2icarol/airs2icarol.py:277
 msgid "Residency Requirements: "
 msgstr "Conditions de résidence : "
+
+#: airs2icarol/airs2icarol.py:340 airs2icarol/airs2icarol.py:341
+#: airs2icarol/airs2icarol.py:342 airs2icarol/airs2icarol.py:343
+msgid "Primary Executive"
+msgstr "Cadre primaire"
+
+#: airs2icarol/airs2icarol.py:387 airs2icarol/airs2icarol.py:388
+#: airs2icarol/airs2icarol.py:389 airs2icarol/airs2icarol.py:390
+#: airs2icarol/airs2icarol.py:417 airs2icarol/airs2icarol.py:418
+#: airs2icarol/airs2icarol.py:419 airs2icarol/airs2icarol.py:420
+msgid "Primary Contact"
+msgstr "Contact primaire"
 
