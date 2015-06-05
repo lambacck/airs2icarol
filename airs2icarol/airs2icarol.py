@@ -359,6 +359,7 @@ _airs_type_mapping = {
         FieldMapping(43, u'MailingPostalCode', partial(_xpath_join, 'AgencyLocation/MailingAddress/ZipCode/text()')),
         FieldMapping(44, u'MailingCountry', partial(_xpath_join, 'AgencyLocation/MailingAddress/Country/text()')),
         FieldMapping(45, u'MailingStateProvince', partial(_xpath_join, 'AgencyLocation/MailingAddress/State/text()')),
+        FieldMapping(81, u'InternalNotesForEditorsAndViewers', partial(_xpath_join, 'InternalNote/text()')),
     ],
     u'Site': [
         FieldMapping(1, u'AgencyNamePublic', partial(_xpath_join, 'Name/text()')),
@@ -400,6 +401,7 @@ _airs_type_mapping = {
         FieldMapping(35, u'PhysicalLocationDescription', _physical_location_description),
 
         FieldMapping(13, u'LanguagesOffered', _languages_offered),
+        FieldMapping(81, u'InternalNotesForEditorsAndViewers', partial(_xpath_join, 'InternalNote/text()')),
     ],
     u'SiteService': [
         FieldMapping(1, u'AgencyNamePublic', partial(_xpath_join, 'Name/text()')),

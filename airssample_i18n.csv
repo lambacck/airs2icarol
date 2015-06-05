@@ -64,6 +64,9 @@ Dates : DATES [French]"
 ZZZ99990,ZZZ99990,SITE,5,AgencyDescription,fr,SITE_DESCRIPTION [French]
 ZZZ99990,ZZZ99990,SITE,35,PhysicalLocationDescription,fr,Intersection : INTERSECTION [French] ; SITE_LOCATION [French]
 ZZZ99990,ZZZ99990,SITE,13,LanguagesOffered,fr,anglais - LANGUAGE_NOTES_1 [French] ; Autre - LANGUAGE_NOTES_2 [French] ; français
+ZZZ99990,ZZZ99990,SITE,81,InternalNotesForEditorsAndViewers,fr,"PUBLIC_COMMENTS [French]
+
+COMMENTS [French]"
 ,ZZZ99990,AGENCY,1,AgencyNamePublic,fr,"ORG_LEVEL_1 [French], ORG_LEVEL_2 [French], ORG_LEVEL_3 [French], ORG_LEVEL_4 [French], ORG_LEVEL_5 [French]"
 ,ZZZ99990,AGENCY,4,AgencyNameAlternate,fr,ALT_ORG 1 [French] ; ALT_ORG 2 [French] ; ALT_ORG 3 [French] ; FORMER_ORG 1 [French] ; FORMER_ORG 2 [French] ; FORMER_ORG 3 [French] ; LEGAL_ORG [French]
 ,ZZZ99990,AGENCY,5,AgencyDescription,fr,AGENCY_DESCRIPTION [French]
@@ -101,3 +104,6 @@ Box PO_BOX_NO [French], MAIL_STREET_NUMBER [French], MAIL_STREET [French] Rue No
 ,ZZZ99990,AGENCY,43,MailingPostalCode,fr,A1A 1A1
 ,ZZZ99990,AGENCY,44,MailingCountry,fr,MAIL_COUNTRY [French]
 ,ZZZ99990,AGENCY,45,MailingStateProvince,fr,ON
+,ZZZ99990,AGENCY,81,InternalNotesForEditorsAndViewers,fr,"PUBLIC_COMMENTS [French]
+
+COMMENTS [French]"
