@@ -56,7 +56,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'AIRS XML 2 iCarol Translation'
-copyright = u'2015, Chris Lambacher'
+copyright = u'2015, Ontario 211 Services'
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
