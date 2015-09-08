@@ -63,6 +63,8 @@
 			<xs:element name="Site" type="tSite" block="#all" maxOccurs="unbounded"/>
 			<xs:element name="ResourceInfo" type="tResourceInfo" block="#all" minOccurs="0"/>
 			<xs:element name="InternalNote" type="xs:string" minOccurs="0"/>
+			<xs:element name="EditorsNote" type="xs:string" minOccurs="0"/>
+			<xs:element name="PublicNote" type="xs:string" minOccurs="0"/>
 			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="Agency" type="tAgency" block="#all" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
@@ -208,6 +210,7 @@
 				<xs:element name="County" type="xs:string"/>
 				<xs:element name="State" type="xs:string"/>
 				<xs:element name="Country" type="xs:string"/>
+				<xs:element name="Community" type="xs:string"/>
 			</xs:choice>
 			<xs:element name="ZipCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="CensusTrack" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
@@ -215,6 +218,7 @@
 			<xs:element name="County" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="State" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="Country" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Community" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="Description" type="xs:string" minOccurs="0"/>
 			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
@@ -380,7 +384,9 @@
 			<xs:element name="SiteService" type="tSiteService" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="SpatialLocation" type="tSpatialLocation" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="InternalNote" type="xs:string" minOccurs="0"/>
-			<xs:element name="LocatedInCommunity" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="EditorsNote" type="xs:string" minOccurs="0"/>
+			<xs:element name="PublicNote" type="xs:string" minOccurs="0"/>
+			<xs:element name="LocatedInCommunity" type="xs:string" minOccurs="0" maxOccurs="1"/>
 			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="PublicAccessToTransportation" type="xs:boolean"/>
@@ -436,6 +442,8 @@
 			<xs:element name="IncomeRequirements" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="ResidencyRequirements" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="InternalNote" type="xs:string" minOccurs="0"/>
+			<xs:element name="EditorsNote" type="xs:string" minOccurs="0"/>
+			<xs:element name="PublicNote" type="xs:string" minOccurs="0"/>
 			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="AreaFlexibility" type="xs:boolean">
