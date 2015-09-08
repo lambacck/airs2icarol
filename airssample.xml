@@ -1126,7 +1126,7 @@ Meetings: MEETINGS SERVICE</Notes>
             </Contact>
             <ResourceSpecialist>UPDATED_BY</ResourceSpecialist>
         </ResourceInfo>
-        <InternalNote>INTERNAL_MEMO </InternalNote>
+        <InternalNote>INTERNAL_MEMO</InternalNote>
         <EditorsNote>COMMENTS</EditorsNote>
         <PublicNote>PUBLIC_COMMENTS</PublicNote>
     </Agency>

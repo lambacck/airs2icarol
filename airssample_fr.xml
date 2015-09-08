@@ -436,11 +436,9 @@ Réunions : MEETINGS [French]</Notes>
                     <Name>français</Name>
                 </Languages>
                 <GeographicAreaServed>
-                    <City>Nouvelle Écosse</City>
-                    <City>Nouveau Brunswick</City>
-                    <City>Colombie Britannique</City>
-                    <City>Thornhill</City>
-                    <Description>Colombie Britannique - AREAS_SERVED_TEST_NOTE_1 [French] ; Nouveau Brunswick - AREAS_SERVED_TEST_NOTE_2 [French] ; Nouvelle Écosse ; Thornhill ; AREAS_SERVED_TEST_NOTE_3 [French]</Description>
+                    <City>COMMUNITY [French]</City>
+                    <City>COMMUNITY 2 [French]</City>
+                    <Description>COMMUNITY - NOTES ; COMMUNITY 2 - NOTES ; AREAS_SERVED_NOTES [French]</Description>
                 </GeographicAreaServed>
                 <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2015-05-12" DateLastVerified="2015-05-12" DateOfLastAction="2015-05-12">
                     <Contact Type="Source">
@@ -468,9 +466,9 @@ Réunions : MEETINGS [French]</Notes>
                 <OtherRequirements>ELIGIBILITY_NOTES [French]</OtherRequirements>
                 <AgeRequirements>Âges : 1 an(s) - 99 an(s)</AgeRequirements>
                 <ResidencyRequirements>BOUNDARIES [French]</ResidencyRequirements>
-                <InternalNote>PUBLIC_COMMENTS [French]&#13;
-&#13;
-COMMENTS [French]</InternalNote>
+                <InternalNote>INTERNAL_MEMO [French]</InternalNote>
+                <EditorsNote>COMMENTS [French]</EditorsNote>
+                <PublicNote>PUBLIC_COMMENTS [French]</PublicNote>
             </SiteService>
             <SpatialLocation>
                 <Description>GEOCODE_NOTES [French]</Description>
@@ -478,10 +476,10 @@ COMMENTS [French]</InternalNote>
                 <Latitude>+43.3793040</Latitude>
                 <Longitude>-79.7993360</Longitude>
             </SpatialLocation>
-            <InternalNote>PUBLIC_COMMENTS [French]&#13;
-&#13;
-COMMENTS [French]</InternalNote>
-            <LocatedInCommunity>Burlington</LocatedInCommunity>
+            <InternalNote>INTERNAL_MEMO [French]</InternalNote>
+            <EditorsNote>COMMENTS [French]</EditorsNote>
+            <PublicNote>PUBLIC_COMMENTS [French]</PublicNote>
+            <LocatedInCommunity>COMMUNITY [French]</LocatedInCommunity>
         </Site>
         <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2015-05-12" DateLastVerified="2015-05-12" DateOfLastAction="2015-05-12">
             <Contact Type="Source">
@@ -501,8 +499,8 @@ COMMENTS [French]</InternalNote>
             </Contact>
             <ResourceSpecialist>HD</ResourceSpecialist>
         </ResourceInfo>
-        <InternalNote>PUBLIC_COMMENTS [French]&#13;
-&#13;
-COMMENTS [French]</InternalNote>
+        <InternalNote>INTERNAL_MEMO [French]</InternalNote>
+        <EditorsNote>COMMENTS [French]</EditorsNote>
+        <PublicNote>PUBLIC_COMMENTS [French]</PublicNote>
     </Agency>
 </Source>
