@@ -59,7 +59,7 @@
                 <Country>MAIL_COUNTRY</Country>
             </MailingAddress>
             <CrossStreet>INTERSECTION</CrossStreet>
-            <LocatedInCommunity>Burlington</LocatedInCommunity>
+            <LocatedInCommunity>COMMUNITY</LocatedInCommunity>
         </AgencyLocation>
         <Phone TollFree="false" Confidential="false">
             <PhoneNumber>OFFICE_PHONE</PhoneNumber>
@@ -414,9 +414,9 @@ Meetings: MEETINGS SERVICE</Notes>
                     <Notes>LANGUAGE_NOTES_1 SERVICE</Notes>
                 </Languages>
                 <GeographicAreaServed>
-                    <City>Halton Region</City>
-                    <City>Peel Region</City>
-                    <Description>Halton Region - AREAS_SERVED_TEST_NOTE_1 SERVICE ; Peel Region - AREAS_SERVED_TEST_NOTE_2 SERVICE ; AREAS_SERVED_TEST_NOTE_3 SERVICE</Description>
+                    <City>COMMUNITY</City>
+                    <City>COMMUNITY 2</City>
+                    <Description>COMMUNITY - NOTES ; COMMUNITY 2 - NOTES ; AREAS_SERVED_NOTES</Description>
                 </GeographicAreaServed>
                 <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2013-03-15" DateLastVerified="2013-03-15" DateOfLastAction="2015-04-13">
                     <Contact Type="Source">
@@ -443,9 +443,9 @@ Meetings: MEETINGS SERVICE</Notes>
                 <OtherRequirements>ELIGIBILITY_NOTES SERVICE</OtherRequirements>
                 <AgeRequirements>Ages: 1 year(s) - 99 year(s)</AgeRequirements>
                 <ResidencyRequirements>BOUNDARIES SERVICE</ResidencyRequirements>
-                <InternalNote>PUBLIC_COMMENTS SERVICE
-
-COMMENTS SERVICE</InternalNote>
+                <InternalNote>INTERNAL_MEMO SERVICE</InternalNote>
+                <EditorsNote>COMMENTS SERVICE</EditorsNote>
+                <PublicNote>PUBLIC_COMMENTS SERVICE</PublicNote>
             </SiteService>
             <SiteService>
                 <Name>SERVICE_NAME_LEVEL_1 A, SERVICE_NAME_LEVEL_2 A</Name>
@@ -590,11 +590,9 @@ Meetings: MEETINGS</Notes>
                     <Notes>LANGUAGE_NOTES_2</Notes>
                 </Languages>
                 <GeographicAreaServed>
-                    <City>Nova Scotia</City>
-                    <City>New Brunswick</City>
-                    <City>British Columbia</City>
-                    <City>Thornhill</City>
-                    <Description>British Columbia - AREAS_SERVED_TEST_NOTE_1 ; New Brunswick - AREAS_SERVED_TEST_NOTE_2 ; Nova Scotia ; Thornhill ; AREAS_SERVED_TEST_NOTE_3</Description>
+                    <City>COMMUNITY</City>
+                    <City>COMMUNITY 2</City>
+                    <Description>COMMUNITY - NOTES ; COMMUNITY 2 - NOTES ; AREAS_SERVED_NOTES</Description>
                 </GeographicAreaServed>
                 <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2013-03-08" DateLastVerified="2013-03-08" DateOfLastAction="2015-04-13">
                     <Contact Type="Source">
@@ -622,9 +620,9 @@ Meetings: MEETINGS</Notes>
                 <OtherRequirements>ELIGIBILITY_NOTES</OtherRequirements>
                 <AgeRequirements>Ages: 1 year(s) - 99 year(s)</AgeRequirements>
                 <ResidencyRequirements>BOUNDARIES</ResidencyRequirements>
-                <InternalNote>PUBLIC_COMMENTS
-
-COMMENTS</InternalNote>
+                <InternalNote>INTERNAL_MEMO</InternalNote>
+                <EditorsNote>COMMENTS</EditorsNote>
+                <PublicNote>PUBLIC_COMMENTS</PublicNote>
             </SiteService>
             <SpatialLocation>
                 <Description>GEOCODE_NOTES</Description>
@@ -632,10 +630,10 @@ COMMENTS</InternalNote>
                 <Latitude>+43.3793040</Latitude>
                 <Longitude>-79.7993360</Longitude>
             </SpatialLocation>
-            <InternalNote>PUBLIC_COMMENTS
-
-COMMENTS</InternalNote>
-            <LocatedInCommunity>Burlington</LocatedInCommunity>
+            <InternalNote>INTERNAL_MEMO</InternalNote>
+            <EditorsNote>COMMENTS</EditorsNote>
+            <PublicNote>PUBLIC_COMMENTS</PublicNote>
+            <LocatedInCommunity>COMMUNITY</LocatedInCommunity>
         </Site>
         <Site ExcludeFromWebsite="true" ExcludeFromDirectory="true">
             <Key>ZZZ99991</Key>
@@ -911,11 +909,9 @@ Meetings: MEETINGS</Notes>
                     <Notes>LANGUAGE_NOTES_2</Notes>
                 </Languages>
                 <GeographicAreaServed>
-                    <City>Nova Scotia</City>
-                    <City>New Brunswick</City>
-                    <City>British Columbia</City>
-                    <City>Thornhill</City>
-                    <Description>British Columbia - AREAS_SERVED_TEST_NOTE_1 ; New Brunswick - AREAS_SERVED_TEST_NOTE_2 ; Nova Scotia ; Thornhill ; AREAS_SERVED_TEST_NOTE_3</Description>
+                    <City>COMMUNITY</City>
+                    <City>COMMUNITY 2</City>
+                    <Description>COMMUNITY - NOTES ; COMMUNITY 2 - NOTES ; AREAS_SERVED_NOTES</Description>
                 </GeographicAreaServed>
                 <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2013-03-08" DateLastVerified="2013-03-08" DateOfLastAction="2015-04-13">
                     <Contact Type="Source">
@@ -943,9 +939,9 @@ Meetings: MEETINGS</Notes>
                 <OtherRequirements>ELIGIBILITY_NOTES</OtherRequirements>
                 <AgeRequirements>Ages: 1 year(s) - 99 year(s)</AgeRequirements>
                 <ResidencyRequirements>BOUNDARIES</ResidencyRequirements>
-                <InternalNote>PUBLIC_COMMENTS
-
-COMMENTS</InternalNote>
+                <InternalNote>INTERNAL_MEMO</InternalNote>
+                <EditorsNote>COMMENTS</EditorsNote>
+                <PublicNote>PUBLIC_COMMENTS</PublicNote>
             </SiteService>
             <SiteService>
                 <Name>SERVICE_NAME_LEVEL_1 B, SERVICE_NAME_LEVEL_2 B</Name>
@@ -1068,9 +1064,9 @@ Meetings: MEETINGS SERVICE</Notes>
                     <Notes>LANGUAGE_NOTES_1 SERVICE</Notes>
                 </Languages>
                 <GeographicAreaServed>
-                    <City>Halton Region</City>
-                    <City>Peel Region</City>
-                    <Description>Halton Region - AREAS_SERVED_TEST_NOTE_1 SERVICE ; Peel Region - AREAS_SERVED_TEST_NOTE_2 SERVICE ; AREAS_SERVED_TEST_NOTE_3 SERVICE</Description>
+                    <City>COMMUNITY</City>
+                    <City>COMMUNITY 2</City>
+                    <Description>COMMUNITY - NOTES ; COMMUNITY 2 - NOTES ; AREAS_SERVED_NOTES</Description>
                 </GeographicAreaServed>
                 <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2013-03-15" DateLastVerified="2013-03-15" DateOfLastAction="2015-04-13">
                     <Contact Type="Source">
@@ -1097,9 +1093,9 @@ Meetings: MEETINGS SERVICE</Notes>
                 <OtherRequirements>ELIGIBILITY_NOTES SERVICE</OtherRequirements>
                 <AgeRequirements>Ages: 1 year(s) - 99 year(s)</AgeRequirements>
                 <ResidencyRequirements>BOUNDARIES SERVICE</ResidencyRequirements>
-                <InternalNote>PUBLIC_COMMENTS SERVICE
-
-COMMENTS SERVICE</InternalNote>
+                <InternalNote>INTERNAL_MEMO SERVICE</InternalNote>
+                <EditorsNote>COMMENTS SERVICE</EditorsNote>
+                <PublicNote>PUBLIC_COMMENTS SERVICE</PublicNote>
             </SiteService>
             <SpatialLocation>
                 <Description>GEOCODE_NOTES SITE</Description>
@@ -1107,10 +1103,10 @@ COMMENTS SERVICE</InternalNote>
                 <Latitude>+43.4093650</Latitude>
                 <Longitude>-79.7583090</Longitude>
             </SpatialLocation>
-            <InternalNote>PUBLIC_COMMENTS SITE
-
-COMMENTS SITE</InternalNote>
-            <LocatedInCommunity>Burlington</LocatedInCommunity>
+            <InternalNote>INTERNAL_MEMO SITE</InternalNote>
+            <EditorsNote>COMMENTS SITE</EditorsNote>
+            <PublicNote>PUBLIC_COMMENTS SITE</PublicNote>
+            <LocatedInCommunity>COMMUNITY</LocatedInCommunity>
         </Site>
         <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2013-03-08" DateLastVerified="2013-03-08" DateOfLastAction="2015-04-13">
             <Contact Type="Source">
@@ -1130,8 +1126,8 @@ COMMENTS SITE</InternalNote>
             </Contact>
             <ResourceSpecialist>UPDATED_BY</ResourceSpecialist>
         </ResourceInfo>
-        <InternalNote>PUBLIC_COMMENTS
-
-COMMENTS</InternalNote>
+        <InternalNote>INTERNAL_MEMO </InternalNote>
+        <EditorsNote>COMMENTS</EditorsNote>
+        <PublicNote>PUBLIC_COMMENTS</PublicNote>
     </Agency>
 </Source>
