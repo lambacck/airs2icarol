@@ -476,8 +476,15 @@ for entry in _airs_type_mapping:
 ###Sorted is unnecessary for functionality, however having the fields in alphabetical order is more appealing.
 field_header = sorted(list(set(field_header)))
 
+#Remove the memo items and place at the end of the list
+###This could instead be done with 3 calls to remove followed by 3 calls to append but this is easier to maintain if a new memo is added
+last_items = ['InternalNotesForEditorsAndViewers','InternalNote','Custom_PublicComments']
+field_header = [i for i in field_header if i not in last_items]
+for item in last_items:
+    field_header.append(item)
 
-###Could probably be done better
+
+###Could probably be done differently
 for item in field_header:
     header.append(item)
 
