@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from collections import namedtuple
 from functools import partial
 from zipfile import ZipFile
 import zipfile
@@ -20,7 +19,6 @@ from lxml import etree
 from . import bufferedzip
 from .utf8csv import UTF8CSVWriter
 
-FieldMapping = namedtuple('FieldMapping', 'FieldName extractfn')
 
 def convert_xml(source_file, dest_file, culture, gettext):
     """Convert from an AIRS 3.0 XML file to an iCarol CSV translation file
@@ -55,19 +53,8 @@ def convert_xml(source_file, dest_file, culture, gettext):
     event, element = next(iterable)
 
     # get the generator for the 'Source' element
-    converted = _convert_part(processed, processed, iterable, element, 'Source', culture, _=gettext)
-    '''
-    header = ['AgencyNUM', 'NUM', 'Record Type', 'CultureCode', 'FieldValue']
-
-    field_header = []
-    for entry in _airs_type_mapping:
-        for item in _airs_type_mapping[entry]:
-            field_header.append(item[0])
-    field_header = list(set(field_header))
-    for item in field_header:
-        header.append(item)
-    '''   
-    data = itertools.chain([header], converted)
+    converted = _convert_part(processed, processed, iterable, element, 'Source', culture, _=gettext)  
+    data = itertools.chain([_header_row], converted)
 
     # open destination file
     with open(dest_file, 'wb') as fd:
@@ -216,21 +203,22 @@ def _convert_part(error_log, processed, iterable, root, tagname, culture=None, a
             joinstr = _(u'; ')
 
             # iterate over mapping definitions
-
-            ###Highly inefficient, most likely can be changed to avoid double for + if
+			
             temp = [agencynum or '', key, record_type, culture]
-            for item in field_header:
+            type_mapping = _airs_type_mapping[tagname]
+            for item in _field_order:
                 try:
-                    fn = _airs_type_mapping[tagname][item]
+                    fn = type_mapping[item]
                     value = fn(element, joinstr=joinstr, _=_)
                     if value:
                         value = value.strip()
                         temp.append(value)
-                    ###This may be unnecessary if we can guarantee no fields are blank
                     else:
                         temp.append('')
+                        #print tagname, item
                 except KeyError:
                     temp.append('')
+                    #print tagname, item
             yield temp
             
             # NOTE this return must happen on the end event when element is root
@@ -332,9 +320,9 @@ _airs_type_mapping = {
     u'Source': {},
     u'Agency': {
         u'AgencyNamePublic': partial(_xpath_join, 'Name/text()'),
-        u'AgencyNameAlternate': partial(_xpath_join, 'AKA/Name/text()'),
+        u'AgencyNameAlternate': partial(_translated_type_xpath, _('FORMER'), 'AKA/Name[not (starts-with(text(),"%s"))]/text()'), #TODO: Using this line as template rework all other lines with conditions
         u'AgencyDescription': partial(_xpath_join, 'AgencyDescription/text()'),
-        
+
         u'PhoneTollFree': partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()'),
         u'PhoneNumberHotline': partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Crisis"]/PhoneNumber/text()'),
         u'PhoneNumberAfterHours': partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "After Hours"]/PhoneNumber/text()'),
@@ -373,13 +361,16 @@ _airs_type_mapping = {
         u'MailingPostalCode': partial(_xpath_join, 'AgencyLocation/MailingAddress/ZipCode/text()'),
         u'MailingCountry': partial(_xpath_join, 'AgencyLocation/MailingAddress/Country/text()'),
         u'MailingStateProvince': partial(_xpath_join, 'AgencyLocation/MailingAddress/State/text()'),
+		
         u'InternalNotesForEditorsAndViewers': partial(_xpath_join, 'InternalNote/text()'),
-	u'InternalNote': partial(_xpath_join, 'EditorsNote/text()'),
-	u'Custom_PublicComments': partial(_xpath_join, 'PublicNote/text()'),
+        u'InternalNote': partial(_xpath_join, 'EditorsNote/text()'),
+        u'Custom_PublicComments': partial(_xpath_join, 'PublicNote/text()'),
+        u'Custom_FormerNames': partial(_xpath_join, 'AKA/Name[starts-with(text(),"FORMER")]/text()'),
+        u'Custom_LegalNames': partial(_xpath_join, 'AKA/Name[starts-with(text(),"LEGAL")]/text()'),
     },
     u'Site': {
         u'AgencyNamePublic': partial(_xpath_join, 'Name/text()'),
-        u'AgencyNameAlternate': partial(_xpath_join, 'AKA/Name/text()'),
+        u'AgencyNameAlternate': partial(_xpath_join, 'AKA/Name[not (starts-with(text(),"FORMER") or starts-with(text(),"LEGAL"))]/text()'),
         u'PhysicalAddress1': partial(_addr_line_1_join, 'PhysicalAddress/*[self::PreAddressLine or self::Line1]/text()'),
         u'PhysicalAddress2': partial(_xpath_join, 'PhysicalAddress/Line2/text()'),
         u'PhysicalCity': partial(_xpath_join, 'PhysicalAddress/City/text()'),
@@ -418,12 +409,14 @@ _airs_type_mapping = {
 
         u'LanguagesOffered': _languages_offered,
         u'InternalNotesForEditorsAndViewers': partial(_xpath_join, 'InternalNote/text()'),
-	u'InternalNote': partial(_xpath_join, 'EditorsNote/text()'),
-	u'Custom_PublicComments': partial(_xpath_join, 'PublicNote/text()'),
+        u'InternalNote': partial(_xpath_join, 'EditorsNote/text()'),
+        u'Custom_PublicComments': partial(_xpath_join, 'PublicNote/text()'),
+        u'Custom_FormerNames': partial(_xpath_join, 'AKA/Name[starts-with(text(),"FORMER")]/text()'),
+        u'Custom_LegalNames': partial(_xpath_join, 'AKA/Name[starts-with(text(),"LEGAL")]/text()'),
     },
     u'SiteService': {
         u'AgencyNamePublic': partial(_xpath_join, 'Name/text()'),
-        u'AgencyNameAlternate': partial(_xpath_join, 'AKA/Name/text()'),
+        u'AgencyNameAlternate': partial(_xpath_join, 'AKA/Name[not (starts-with(text(),"FORMER") or starts-with(text(),"LEGAL"))]/text()'),
         u'AgencyDescription': partial(_xpath_join, 'Description/text()'),
 
         u'PhoneTollFree': partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()'),
@@ -453,40 +446,34 @@ _airs_type_mapping = {
         u'ApplicationProcess': partial(_xpath_join, 'ApplicationProcess/Description/text()'),
         u'LanguagesOffered': _languages_offered,
         u'InternalNotesForEditorsAndViewers': partial(_xpath_join, 'InternalNote/text()'),
-	u'InternalNote': partial(_xpath_join, 'EditorsNote/text()'),
-	u'Custom_PublicComments': partial(_xpath_join, 'PublicNote/text()'),
+        u'InternalNote': partial(_xpath_join, 'EditorsNote/text()'),
+        u'Custom_PublicComments': partial(_xpath_join, 'PublicNote/text()'),
         u'Eligibility': _eligibility,
         u'HoursOfOperation': partial(_xpath_join, 'TimeOpen/Notes/text()'),
+        u'Custom_FormerNames': partial(_xpath_join, 'AKA/Name[starts-with(text(),"FORMER")]/text()'),
+        u'Custom_LegalNames': partial(_xpath_join, 'AKA/Name[starts-with(text(),"LEGAL")]/text()'),
 
     }
 
 
 }
-###This was moved from the convert_xml function to be global in order to access it in _convert_part. There may be better solutions
-header = ['AgencyNUM', 'NUM', 'Record Type', 'CultureCode']
+_header_prefix = ['AgencyNUM', 'NUM', 'Record Type', 'CultureCode']
 
-#Get all keys from dictionary
-###Done quickly, can probably remove one loop
-field_header = []
-for entry in _airs_type_mapping:
-    for key in _airs_type_mapping[entry]:
-        field_header.append(key)
+# Get all keys from dictionary
+_field_order = [key for entry in _airs_type_mapping.values() for key in entry.keys()]
 
-#Remove duplicates
-###Sorted is unnecessary for functionality, however having the fields in alphabetical order is more appealing.
-field_header = sorted(list(set(field_header)))
+# Remove duplicates
+_field_order = sorted(list(set(_field_order)))
 
-#Remove the memo items and place at the end of the list
+# Remove the memo items and place them at the end of the list
 ###This could instead be done with 3 calls to remove followed by 3 calls to append but this is easier to maintain if a new memo is added
-last_items = ['InternalNotesForEditorsAndViewers','InternalNote','Custom_PublicComments']
-field_header = [i for i in field_header if i not in last_items]
-for item in last_items:
-    field_header.append(item)
+_last_items = ['InternalNotesForEditorsAndViewers','InternalNote','Custom_PublicComments','Custom_FormerNames','Custom_LegalNames']
+_field_order = [i for i in _field_order if i not in _last_items]
+for item in _last_items:
+    _field_order.append(item)
 
-
-###Could probably be done differently
-for item in field_header:
-    header.append(item)
+_header_row = _header_prefix + _field_order
+# A dictionary containing the different terms which meet a condition and their translations.
 
 del _
 
