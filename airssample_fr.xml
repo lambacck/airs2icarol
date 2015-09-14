@@ -17,22 +17,22 @@
             <Confidential>false</Confidential>
         </AKA>
         <AKA>
-            <Name>ANCIENNE_ORG 1 [French]</Name>
+            <Name>FORMER_ORG 1 [French]</Name>
             <Confidential>false</Confidential>
             <Description>Nom antérieur : 2001</Description>
         </AKA>
         <AKA>
-            <Name>ANCIENNE_ORG 2 [French]</Name>
+            <Name>FORMER_ORG 2 [French]</Name>
             <Confidential>false</Confidential>
             <Description>Nom antérieur : 2008</Description>
         </AKA>
         <AKA>
-            <Name>ANCIENNE_ORG 3 [French]</Name>
+            <Name>FORMER_ORG 3 [French]</Name>
             <Confidential>false</Confidential>
             <Description>Nom antérieur</Description>
         </AKA>
         <AKA>
-            <Name>JURIDIQUE_ORG [French]</Name>
+            <Name>LEGAL_ORG [French]</Name>
             <Confidential>false</Confidential>
             <Description>Dénomination sociale</Description>
         </AKA>
@@ -63,18 +63,18 @@
         </AgencyLocation>
         <Phone TollFree="false" Confidential="false">
             <PhoneNumber>OFFICE_PHONE [French]</PhoneNumber>
-            <Description>Bureau</Description>
-            <Type>Voix</Type>
+            <Description>Office</Description>
+            <Type>Voice</Type>
         </Phone>
         <Phone TollFree="false" Confidential="false">
             <PhoneNumber>AFTER_HRS_PHONE [French]</PhoneNumber>
-            <Description>Après des Heures</Description>
-            <Type>Voix</Type>
+            <Description>After Hours</Description>
+            <Type>Voice</Type>
         </Phone>
         <Phone TollFree="false" Confidential="false">
             <PhoneNumber>CRISIS_PHONE [French]</PhoneNumber>
-            <Description>Crise</Description>
-            <Type>Voix</Type>
+            <Description>Crisis</Description>
+            <Type>Voice</Type>
         </Phone>
         <Phone TollFree="false" Confidential="false">
             <PhoneNumber>FAX [French]</PhoneNumber>
@@ -87,12 +87,12 @@
             <Type>TTY/TDD</Type>
         </Phone>
         <Phone TollFree="true" Confidential="false">
-            <PhoneNumber>Tél. sans frais [French]</PhoneNumber>
+            <PhoneNumber>TOLL_FREE_PHONE [French]</PhoneNumber>
             <Description>Toll Free</Description>
-            <Type>Voix</Type>
+            <Type>Voice</Type>
         </Phone>
         <URL>
-            <Address>WWW_ADRESSE_FR.net</Address>
+            <Address>WWW_ADDRESS_FR.net</Address>
         </URL>
         <Email>
             <Address>E_MAIL_FR@contact.org</Address>
@@ -159,22 +159,22 @@
                 <Confidential>false</Confidential>
             </AKA>
             <AKA>
-                <Name>ANCIENNE_ORG 1 [French]</Name>
+                <Name>FORMER_ORG 1 [French]</Name>
                 <Confidential>false</Confidential>
                 <Description>Nom antérieur : 2001</Description>
             </AKA>
             <AKA>
-                <Name>ANCIENNE_ORG 2 [French]</Name>
+                <Name>FORMER_ORG 2 [French]</Name>
                 <Confidential>false</Confidential>
                 <Description>Nom antérieur : 2008</Description>
             </AKA>
             <AKA>
-                <Name>ANCIENNE_ORG 3 [French]</Name>
+                <Name>FORMER_ORG 3 [French]</Name>
                 <Confidential>false</Confidential>
                 <Description>Nom antérieur</Description>
             </AKA>
             <AKA>
-                <Name>JURIDIQUE_ORG [French]</Name>
+                <Name>LEGAL_ORG [French]</Name>
                 <Confidential>false</Confidential>
                 <Description>Dénomination sociale</Description>
             </AKA>
@@ -199,18 +199,18 @@
             <CrossStreet>INTERSECTION [French]</CrossStreet>
             <Phone TollFree="false" Confidential="false">
                 <PhoneNumber>OFFICE_PHONE [French]</PhoneNumber>
-                <Description>Bureau</Description>
-                <Type>Voix</Type>
+                <Description>Office</Description>
+                <Type>Voice</Type>
             </Phone>
             <Phone TollFree="false" Confidential="false">
                 <PhoneNumber>AFTER_HRS_PHONE [French]</PhoneNumber>
-                <Description>Après des Heures</Description>
-                <Type>Voix</Type>
+                <Description>After Hours</Description>
+                <Type>Voice</Type>
             </Phone>
             <Phone TollFree="false" Confidential="false">
                 <PhoneNumber>CRISIS_PHONE [French]</PhoneNumber>
-                <Description>Crise</Description>
-                <Type>Voix</Type>
+                <Description>Crisis</Description>
+                <Type>Voice</Type>
             </Phone>
             <Phone TollFree="false" Confidential="false">
                 <PhoneNumber>FAX [French]</PhoneNumber>
@@ -223,9 +223,9 @@
                 <Type>TTY/TDD</Type>
             </Phone>
             <Phone TollFree="true" Confidential="false">
-                <PhoneNumber>Tél. sans frais [French]</PhoneNumber>
+                <PhoneNumber>TOLL_FREE_PHONE [French]</PhoneNumber>
                 <Description>Toll Free</Description>
-                <Type>Voix</Type>
+                <Type>Voice</Type>
             </Phone>
             <URL>
                 <Address>WWW_ADDRESS_FR.net</Address>
@@ -310,39 +310,39 @@ Dates : DATES [French]</Notes>
                     <Confidential>false</Confidential>
                 </AKA>
                 <AKA>
-                    <Name>ANCIENNE_ORG 1 [French]</Name>
+                    <Name>FORMER_ORG 1 [French]</Name>
                     <Confidential>false</Confidential>
                     <Description>Nom antérieur : 2001</Description>
                 </AKA>
                 <AKA>
-                    <Name>ANCIENNE_ORG 2 [French]</Name>
+                    <Name>FORMER_ORG 2 [French]</Name>
                     <Confidential>false</Confidential>
                     <Description>Nom antérieur : 2008</Description>
                 </AKA>
                 <AKA>
-                    <Name>ANCIENNE_ORG 3 [French]</Name>
+                    <Name>FORMER_ORG 3 [French]</Name>
                     <Confidential>false</Confidential>
                     <Description>Nom antérieur</Description>
                 </AKA>
                 <AKA>
-                    <Name>JURIDIQUE_ORG [French]</Name>
+                    <Name>LEGAL_ORG [French]</Name>
                     <Confidential>false</Confidential>
                     <Description>Dénomination sociale</Description>
                 </AKA>
                 <Phone TollFree="false" Confidential="false">
                     <PhoneNumber>OFFICE_PHONE [French]</PhoneNumber>
-                    <Description>Bureau</Description>
-                    <Type>Voix</Type>
+                    <Description>Office</Description>
+                    <Type>Voice</Type>
                 </Phone>
                 <Phone TollFree="false" Confidential="false">
                     <PhoneNumber>AFTER_HRS_PHONE [French]</PhoneNumber>
-                    <Description>Après des Heures</Description>
-                    <Type>Voix</Type>
+                    <Description>After Hours</Description>
+                    <Type>Voice</Type>
                 </Phone>
                 <Phone TollFree="false" Confidential="false">
                     <PhoneNumber>CRISIS_PHONE [French]</PhoneNumber>
-                    <Description>Crise</Description>
-                    <Type>Voix</Type>
+                    <Description>Crisis</Description>
+                    <Type>Voice</Type>
                 </Phone>
                 <Phone TollFree="false" Confidential="false">
                     <PhoneNumber>FAX [French]</PhoneNumber>
@@ -355,9 +355,9 @@ Dates : DATES [French]</Notes>
                     <Type>TTY/TDD</Type>
                 </Phone>
                 <Phone TollFree="true" Confidential="false">
-                    <PhoneNumber>Tél. sans frais [French]</PhoneNumber>
+                    <PhoneNumber>TOLL_FREE_PHONE [French]</PhoneNumber>
                     <Description>Toll Free</Description>
-                    <Type>Voix</Type>
+                    <Type>Voice</Type>
                 </Phone>
                 <URL>
                     <Address>WWW_ADDRESS_FR.net</Address>
@@ -449,7 +449,7 @@ Réunions : MEETINGS [French]</Notes>
                         </Email>
                         <Phone TollFree="false" Confidential="false">
                             <PhoneNumber>SOURCE_PHONE [French]</PhoneNumber>
-                            <Type>Voix</Type>
+                            <Type>Voice</Type>
                         </Phone>
                         <Phone TollFree="false" Confidential="false">
                             <PhoneNumber>SOURCE_FAX [French]</PhoneNumber>
@@ -490,7 +490,7 @@ Réunions : MEETINGS [French]</Notes>
                 </Email>
                 <Phone TollFree="false" Confidential="false">
                     <PhoneNumber>SOURCE_PHONE [French]</PhoneNumber>
-                    <Type>Voix</Type>
+                    <Type>Voice</Type>
                 </Phone>
                 <Phone TollFree="false" Confidential="false">
                     <PhoneNumber>SOURCE_FAX [French]</PhoneNumber>

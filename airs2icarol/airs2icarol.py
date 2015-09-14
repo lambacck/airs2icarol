@@ -53,7 +53,7 @@ def convert_xml(source_file, dest_file, culture, gettext):
     event, element = next(iterable)
 
     # get the generator for the 'Source' element
-    converted = _convert_part(processed, processed, iterable, element, 'Source', culture, _=gettext)  
+    converted = _convert_part(processed, processed, iterable, element, 'Source', culture, _=gettext)
     data = itertools.chain([_header_row], converted)
 
     # open destination file
@@ -148,7 +148,6 @@ def _convert_part(error_log, processed, iterable, root, tagname, culture=None, a
         try:
             # collect XML parse events
             event, element = next(iterable)
-            
         except StopIteration:
             # End of File, need to escape
             return
@@ -199,28 +198,24 @@ def _convert_part(error_log, processed, iterable, root, tagname, culture=None, a
             # record that we have seen this id
             processed.add(record_id)
 
-            # get the translation fo_airs_type_mappingr the default join string
+            # get the translation for the default join string
             joinstr = _(u'; ')
 
             # iterate over mapping definitions
-			
-            temp = [agencynum or '', key, record_type, culture]
+
+            rows = [agencynum or '', key, record_type, culture]
             type_mapping = _airs_type_mapping[tagname]
             for item in _field_order:
                 try:
                     fn = type_mapping[item]
                     value = fn(element, joinstr=joinstr, _=_)
-                    if value:
-                        value = value.strip()
-                        temp.append(value)
-                    else:
-                        temp.append('')
-                        #print tagname, item
                 except KeyError:
-                    temp.append('')
-                    #print tagname, item
-            yield temp
-            
+                    value = ''
+                value = (value or '').strip()
+                rows.append(value)
+
+            yield rows
+
             # NOTE this return must happen on the end event when element is root
             return
 
@@ -305,12 +300,19 @@ def _addr_line_1_join(xpath, root_element, joinstr=u'; ', _=None):
     return _xpath_join(xpath, root_element, '\n', _)
 
 
-def _translated_type_xpath(contact_type, xpath, root_element, joinstr=u'; ', _=None):
-    new_contact_type = contact_type
+def _translated_type_xpath(translate_phrase, xpath, root_element, joinstr=u'; ', _=None):
+    if isinstance(translate_phrase, basestring):
+        new_translate_phrase = [translate_phrase]
+    else:
+        new_translate_phrase = translate_phrase
     if _ is not None:
-        new_contact_type = _(contact_type)
-    new_xpath = xpath % new_contact_type
+        new_translate_phrase = [_(element) for element in new_translate_phrase]
+    new_xpath = xpath % tuple(new_translate_phrase)
     return _xpath_join(new_xpath, root_element, joinstr, _)
+
+
+def _sort_fn(value):
+        return (value in _last_items, value)
 
 
 # make a fake translation fn _ to pick up translation strings that will be translated at run time
@@ -320,7 +322,7 @@ _airs_type_mapping = {
     u'Source': {},
     u'Agency': {
         u'AgencyNamePublic': partial(_xpath_join, 'Name/text()'),
-        u'AgencyNameAlternate': partial(_translated_type_xpath, _('FORMER'), 'AKA/Name[not (starts-with(text(),"%s"))]/text()'), #TODO: Using this line as template rework all other lines with conditions
+        u'AgencyNameAlternate': partial(_translated_type_xpath, [_('Legal Name'),_('Former Name')], 'AKA[not(./Description) or not(starts-with(./Description,"%s") or starts-with(./Description,"%s"))]/Name/text()'),
         u'AgencyDescription': partial(_xpath_join, 'AgencyDescription/text()'),
 
         u'PhoneTollFree': partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()'),
@@ -361,16 +363,16 @@ _airs_type_mapping = {
         u'MailingPostalCode': partial(_xpath_join, 'AgencyLocation/MailingAddress/ZipCode/text()'),
         u'MailingCountry': partial(_xpath_join, 'AgencyLocation/MailingAddress/Country/text()'),
         u'MailingStateProvince': partial(_xpath_join, 'AgencyLocation/MailingAddress/State/text()'),
-		
+
         u'InternalNotesForEditorsAndViewers': partial(_xpath_join, 'InternalNote/text()'),
         u'InternalNote': partial(_xpath_join, 'EditorsNote/text()'),
         u'Custom_PublicComments': partial(_xpath_join, 'PublicNote/text()'),
-        u'Custom_FormerNames': partial(_xpath_join, 'AKA/Name[starts-with(text(),"FORMER")]/text()'),
-        u'Custom_LegalNames': partial(_xpath_join, 'AKA/Name[starts-with(text(),"LEGAL")]/text()'),
+        u'Custom_FormerNames': partial(_translated_type_xpath, _('Former Name'), 'AKA/Description[starts-with(text(), "%s")]/../Name/text()'),
+        u'Custom_LegalNames': partial(_translated_type_xpath, _('Legal Name'), 'AKA/Description[starts-with(text(), "%s")]/../Name/text()'),
     },
     u'Site': {
         u'AgencyNamePublic': partial(_xpath_join, 'Name/text()'),
-        u'AgencyNameAlternate': partial(_xpath_join, 'AKA/Name[not (starts-with(text(),"FORMER") or starts-with(text(),"LEGAL"))]/text()'),
+        u'AgencyNameAlternate': partial(_translated_type_xpath, [_('Legal Name'),_('Former Name')], 'AKA[not(./Description) or not(starts-with(./Description,"%s") or starts-with(./Description,"%s"))]/Name/text()'),
         u'PhysicalAddress1': partial(_addr_line_1_join, 'PhysicalAddress/*[self::PreAddressLine or self::Line1]/text()'),
         u'PhysicalAddress2': partial(_xpath_join, 'PhysicalAddress/Line2/text()'),
         u'PhysicalCity': partial(_xpath_join, 'PhysicalAddress/City/text()'),
@@ -411,12 +413,12 @@ _airs_type_mapping = {
         u'InternalNotesForEditorsAndViewers': partial(_xpath_join, 'InternalNote/text()'),
         u'InternalNote': partial(_xpath_join, 'EditorsNote/text()'),
         u'Custom_PublicComments': partial(_xpath_join, 'PublicNote/text()'),
-        u'Custom_FormerNames': partial(_xpath_join, 'AKA/Name[starts-with(text(),"FORMER")]/text()'),
-        u'Custom_LegalNames': partial(_xpath_join, 'AKA/Name[starts-with(text(),"LEGAL")]/text()'),
+        u'Custom_FormerNames': partial(_translated_type_xpath, _('Former Name'), 'AKA/Description[starts-with(text(), "%s")]/../Name/text()'),
+        u'Custom_LegalNames': partial(_translated_type_xpath, _('Legal Name'), 'AKA/Description[starts-with(text(), "%s")]/../Name/text()'),
     },
     u'SiteService': {
         u'AgencyNamePublic': partial(_xpath_join, 'Name/text()'),
-        u'AgencyNameAlternate': partial(_xpath_join, 'AKA/Name[not (starts-with(text(),"FORMER") or starts-with(text(),"LEGAL"))]/text()'),
+        u'AgencyNameAlternate': partial(_translated_type_xpath, [_('Legal Name'),_('Former Name')], 'AKA[not(./Description) or not(starts-with(./Description,"%s") or starts-with(./Description,"%s"))]/Name/text()'),
         u'AgencyDescription': partial(_xpath_join, 'Description/text()'),
 
         u'PhoneTollFree': partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()'),
@@ -450,8 +452,8 @@ _airs_type_mapping = {
         u'Custom_PublicComments': partial(_xpath_join, 'PublicNote/text()'),
         u'Eligibility': _eligibility,
         u'HoursOfOperation': partial(_xpath_join, 'TimeOpen/Notes/text()'),
-        u'Custom_FormerNames': partial(_xpath_join, 'AKA/Name[starts-with(text(),"FORMER")]/text()'),
-        u'Custom_LegalNames': partial(_xpath_join, 'AKA/Name[starts-with(text(),"LEGAL")]/text()'),
+        u'Custom_FormerNames': partial(_translated_type_xpath, _('Former Name'), 'AKA/Description[starts-with(text(), "%s")]/../Name/text()'),
+        u'Custom_LegalNames': partial(_translated_type_xpath, _('Legal Name'), 'AKA/Description[starts-with(text(), "%s")]/../Name/text()'),
 
     }
 
@@ -462,18 +464,11 @@ _header_prefix = ['AgencyNUM', 'NUM', 'Record Type', 'CultureCode']
 # Get all keys from dictionary
 _field_order = [key for entry in _airs_type_mapping.values() for key in entry.keys()]
 
-# Remove duplicates
-_field_order = sorted(list(set(_field_order)))
-
-# Remove the memo items and place them at the end of the list
-###This could instead be done with 3 calls to remove followed by 3 calls to append but this is easier to maintain if a new memo is added
-_last_items = ['InternalNotesForEditorsAndViewers','InternalNote','Custom_PublicComments','Custom_FormerNames','Custom_LegalNames']
-_field_order = [i for i in _field_order if i not in _last_items]
-for item in _last_items:
-    _field_order.append(item)
+# Remove duplicates and place required elements at the end of the list
+_last_items = ['Custom_PublicComments', 'Custom_FormerNames', 'Custom_LegalNames']
+_field_order = sorted(list(set(_field_order)), key=_sort_fn)
 
 _header_row = _header_prefix + _field_order
-# A dictionary containing the different terms which meet a condition and their translations.
 
 del _
 
