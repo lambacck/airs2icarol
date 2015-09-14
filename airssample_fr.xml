@@ -436,9 +436,9 @@ Réunions : MEETINGS [French]</Notes>
                     <Name>français</Name>
                 </Languages>
                 <GeographicAreaServed>
-                    <City>Communauté [French]</City>
-                    <City>Communauté 2 [French]</City>
-                    <Description>Communauté - NOTES ; COMMUNITY 2 - NOTES ; AREAS_SERVED_NOTES [French]</Description>
+                    <City>COMMUNITY [French]</City>
+                    <City>COMMUNITY 2 [French]</City>
+                    <Description>COMMUNITY - NOTES ; COMMUNITY 2 - NOTES ; AREAS_SERVED_NOTES [French]</Description>
                 </GeographicAreaServed>
                 <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2015-05-12" DateLastVerified="2015-05-12" DateOfLastAction="2015-05-12">
                     <Contact Type="Source">
@@ -479,7 +479,7 @@ Réunions : MEETINGS [French]</Notes>
             <InternalNote>INTERNAL_MEMO [French]</InternalNote>
             <EditorsNote>COMMENTS [French]</EditorsNote>
             <PublicNote>PUBLIC_COMMENTS [French]</PublicNote>
-            <LocatedInCommunity>Communauté [French]</LocatedInCommunity>
+            <LocatedInCommunity>COMMUNITY [French]</LocatedInCommunity>
         </Site>
         <ResourceInfo AvailableForDirectory="false" AvailableForReferral="true" AvailableForResearch="true" DateAdded="2015-05-12" DateLastVerified="2015-05-12" DateOfLastAction="2015-05-12">
             <Contact Type="Source">
