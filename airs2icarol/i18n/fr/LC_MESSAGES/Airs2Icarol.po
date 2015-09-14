@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: airs2icarol 0.1.0\n"
 "Report-Msgid-Bugs-To: chris@kclsoftware.com\n"
-"POT-Creation-Date: 2015-09-14 17:26-0400\n"
+"POT-Creation-Date: 2015-09-14 18:01-0400\n"
 "PO-Revision-Date: 2015-04-29 15:54-0400\n"
 "Last-Translator: Christopher Lambacher <chris@kclsoftware.com>\n"
 "Language-Team: Chris Lambacher <chris@kclsoftware.com>\n"
@@ -61,22 +61,4 @@ msgstr "Cadre primaire"
 #: airs2icarol/airs2icarol.py:438 airs2icarol/airs2icarol.py:439
 msgid "Primary Contact"
 msgstr "Contact primaire"
-
-#~ msgid "FORMER"
-#~ msgstr ""
-
-#~ msgid "Former Name"
-#~ msgstr ""
-
-#~ msgid "Former name"
-#~ msgstr ""
-
-#~ msgid "Former"
-#~ msgstr ""
-
-#~ msgid "Name"
-#~ msgstr ""
-
-#~ msgid "Legal"
-#~ msgstr ""
 
