@@ -3,7 +3,12 @@
 History
 -------
 
-0.3.2 (2015-06-05)
+0.4.0 (2015-09-14)
+---------------------
+
+ * Update for new iCarol format
+
+0.3.3 (2015-06-05)
 ---------------------
 
  * Internal Memo for Agency and Site
