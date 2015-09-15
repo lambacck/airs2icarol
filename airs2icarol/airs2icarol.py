@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from collections import namedtuple
 from functools import partial
 from zipfile import ZipFile
 import zipfile
@@ -19,8 +18,6 @@ from lxml import etree
 
 from . import bufferedzip
 from .utf8csv import UTF8CSVWriter
-
-FieldMapping = namedtuple('FieldMapping', 'FieldID FieldName extractfn')
 
 
 def convert_xml(source_file, dest_file, culture, gettext):
@@ -57,9 +54,7 @@ def convert_xml(source_file, dest_file, culture, gettext):
 
     # get the generator for the 'Source' element
     converted = _convert_part(processed, processed, iterable, element, 'Source', culture, _=gettext)
-
-    header = ['AgencyNUM', 'NUM', 'Record Type', 'LookupID', 'FieldNameInDatabase', 'CultureCode', 'FieldValue']
-    data = itertools.chain([header], converted)
+    data = itertools.chain([_header_row], converted)
 
     # open destination file
     with open(dest_file, 'wb') as fd:
@@ -207,17 +202,20 @@ def _convert_part(error_log, processed, iterable, root, tagname, culture=None, a
             joinstr = _(u'; ')
 
             # iterate over mapping definitions
-            for mapping in _airs_type_mapping[tagname]:
 
-                # grab the value for this row of the CSV
-                value = mapping.extractfn(element, joinstr=joinstr, _=_)
-                if value:
-                    value = value.strip()
+            row = [agencynum or '', key, record_type, culture]
+            type_mapping = _airs_type_mapping[tagname]
+            for item in _field_order:
+                try:
+                    fn = type_mapping[item]
+                except KeyError:
+                    value = ''
+                else:
+                    value = fn(element, joinstr=joinstr, _=_)
+                value = (value or '').strip()
+                row.append(value)
 
-                # only output the row if we got a value
-                if value:
-                    # agency key, record key, iCarol record type, iCarol Field ID, iCarol Field Name, culture code, value
-                    yield [agencynum or '', key, record_type, unicode(mapping.FieldID), mapping.FieldName, culture, value.replace(u'\n', '\r\n')]
+            yield row
 
             # NOTE this return must happen on the end event when element is root
             return
@@ -303,145 +301,176 @@ def _addr_line_1_join(xpath, root_element, joinstr=u'; ', _=None):
     return _xpath_join(xpath, root_element, '\n', _)
 
 
-def _translated_type_xpath(contact_type, xpath, root_element, joinstr=u'; ', _=None):
-    new_contact_type = contact_type
+def _translated_type_xpath(translate_phrase, xpath, root_element, joinstr=u'; ', _=None):
+    if isinstance(translate_phrase, basestring):
+        translate_phrase = [translate_phrase]
+    else:
+        translate_phrase = translate_phrase
     if _ is not None:
-        new_contact_type = _(contact_type)
-    new_xpath = xpath % new_contact_type
+        translate_phrase = [_(element) for element in translate_phrase]
+    new_xpath = xpath % tuple(translate_phrase)
     return _xpath_join(new_xpath, root_element, joinstr, _)
+
+
+def _sort_fn(value):
+        return (value in _last_items, value)
 
 
 # make a fake translation fn _ to pick up translation strings that will be translated at run time
 _ = lambda x: x
 
 _airs_type_mapping = {
-    u'Source': [],
-    u'Agency': [
-        FieldMapping(1, u'AgencyNamePublic', partial(_xpath_join, 'Name/text()')),
-        FieldMapping(4, u'AgencyNameAlternate', partial(_xpath_join, 'AKA/Name/text()')),
-        FieldMapping(5, u'AgencyDescription', partial(_xpath_join, 'AgencyDescription/text()')),
+    u'Source': {},
+    u'Agency': {
+        u'AgencyNamePublic': partial(_xpath_join, 'Name/text()'),
+        u'AgencyNameAlternate': partial(_translated_type_xpath, [_('Legal Name'), _('Former Name')], 'AKA[not(./Description) or not(starts-with(./Description,"%s") or starts-with(./Description,"%s"))]/Name/text()'),
+        u'AgencyDescription': partial(_xpath_join, 'AgencyDescription/text()'),
 
-        FieldMapping(46, u'PhoneTollFree', partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()')),
-        FieldMapping(47, u'PhoneNumberHotline', partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Crisis"]/PhoneNumber/text()')),
-        FieldMapping(49, u'PhoneNumberAfterHours', partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "After Hours"]/PhoneNumber/text()')),
-        FieldMapping(50, u'PhoneNumberBusinessLine', partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Office"]/PhoneNumber/text()')),
-        FieldMapping(51, u'PhoneFax', partial(_xpath_join, 'Phone[./Type/text() = "Fax"]/PhoneNumber/text()')),
-        FieldMapping(52, u'PhoneTTY', partial(_xpath_join, 'Phone[./Type/text() = "TTY/TDD"]/PhoneNumber/text()')),
+        u'PhoneTollFree': partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()'),
+        u'PhoneNumberHotline': partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Crisis"]/PhoneNumber/text()'),
+        u'PhoneNumberAfterHours': partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "After Hours"]/PhoneNumber/text()'),
+        u'PhoneNumberBusinessLine': partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Office"]/PhoneNumber/text()'),
+        u'PhoneFax': partial(_xpath_join, 'Phone[./Type/text() = "Fax"]/PhoneNumber/text()'),
+        u'PhoneTTY': partial(_xpath_join, 'Phone[./Type/text() = "TTY/TDD"]/PhoneNumber/text()'),
 
-        FieldMapping(59, u'WebsiteAddress', partial(_xpath_join, 'URL/Address/text()')),
-        FieldMapping(58, u'EmailAddressMain', partial(_xpath_join, 'Email/Address/text()')),
+        u'WebsiteAddress': partial(_xpath_join, 'URL/Address/text()'),
+        u'EmailAddressMain': partial(_xpath_join, 'Email/Address/text()'),
 
-        FieldMapping(83, u'IRSStatus', partial(_xpath_join, 'IRSStatus/text()')),
-        FieldMapping(84, u'LegalStatus', partial(_xpath_join, '@LegalStatus')),
-        FieldMapping(79, u'SourceOfFunds', partial(_xpath_join, 'SourceOfFunds/text()')),
+        u'IRSStatus': partial(_xpath_join, 'IRSStatus/text()'),
+        u'LegalStatus': partial(_xpath_join, '@LegalStatus'),
+        u'SourceOfFunds': partial(_xpath_join, 'SourceOfFunds/text()'),
 
-        FieldMapping(68, u'LastVerifiedOn', partial(_xpath_join, 'ResourceInfo/@DateLastVerified')),
-        FieldMapping(69, u'LastVerifiedByName', partial(_xpath_join, 'ResourceInfo/Contact/Name/text()')),
-        FieldMapping(70, u'LastVerifiedByTitle', partial(_xpath_join, 'ResourceInfo/Contact/Title/text()')),
-        FieldMapping(71, u'LastVerifiedByEmailAddress', partial(_xpath_join, 'ResourceInfo/Contact/Email/Address/text()')),
-        FieldMapping(72, u'LastVerifiedByPhoneNumber', partial(_xpath_join, 'ResourceInfo/Contact/Phone[Type/text() = "Voice"]/PhoneNumber/text()')),
+        u'LastVerifiedOn': partial(_xpath_join, 'ResourceInfo/@DateLastVerified'),
+        u'LastVerifiedByName': partial(_xpath_join, 'ResourceInfo/Contact/Name/text()'),
+        u'LastVerifiedByTitle': partial(_xpath_join, 'ResourceInfo/Contact/Title/text()'),
+        u'LastVerifiedByEmailAddress': partial(_xpath_join, 'ResourceInfo/Contact/Email/Address/text()'),
+        u'LastVerifiedByPhoneNumber': partial(_xpath_join, 'ResourceInfo/Contact/Phone[Type/text() = "Voice"]/PhoneNumber/text()'),
 
-        FieldMapping(61, u'MainContactTitle', partial(_translated_type_xpath, _('Primary Executive'), 'Contact[@Type = "%s"]/Title/text()')),
-        FieldMapping(60, u'MainContactName', partial(_translated_type_xpath, _('Primary Executive'), 'Contact[@Type = "%s"]/Name/text()')),
-        FieldMapping(62, u'MainContactPhoneNumber', partial(_translated_type_xpath, _('Primary Executive'), 'Contact[@Type = "%s"]/Phone/PhoneNumber/text()')),
-        FieldMapping(63, u'MainContactEmailAddress', partial(_translated_type_xpath, _('Primary Executive'), 'Contact[@Type = "%s"]/Email/Address/text()')),
+        u'MainContactTitle': partial(_translated_type_xpath, _('Primary Executive'), 'Contact[@Type = "%s"]/Title/text()'),
+        u'MainContactName': partial(_translated_type_xpath, _('Primary Executive'), 'Contact[@Type = "%s"]/Name/text()'),
+        u'MainContactPhoneNumber': partial(_translated_type_xpath, _('Primary Executive'), 'Contact[@Type = "%s"]/Phone/PhoneNumber/text()'),
+        u'MainContactEmailAddress': partial(_translated_type_xpath, _('Primary Executive'), 'Contact[@Type = "%s"]/Email/Address/text()'),
 
-        FieldMapping(25, u'PhysicalAddress1', partial(_addr_line_1_join, 'AgencyLocation/PhysicalAddress/*[self::PreAddressLine or self::Line1]/text()')),
-        FieldMapping(26, u'PhysicalAddress2', partial(_xpath_join, 'AgencyLocation/PhysicalAddress/Line2/text()')),
-        FieldMapping(28, u'PhysicalCity', partial(_xpath_join, 'AgencyLocation/PhysicalAddress/City/text()')),
-        FieldMapping(30, u'PhysicalStateProvince', partial(_xpath_join, 'AgencyLocation/PhysicalAddress/State/text()')),
-        FieldMapping(31, u'PhysicalCountry', partial(_xpath_join, 'AgencyLocation/PhysicalAddress/Country/text()')),
-        FieldMapping(32, u'PhysicalPostalCode', partial(_xpath_join, 'AgencyLocation/PhysicalAddress/ZipCode/text()')),
+        u'PhysicalAddress1': partial(_addr_line_1_join, 'AgencyLocation/PhysicalAddress/*[self::PreAddressLine or self::Line1]/text()'),
+        u'PhysicalAddress2': partial(_xpath_join, 'AgencyLocation/PhysicalAddress/Line2/text()'),
+        u'PhysicalCity': partial(_xpath_join, 'AgencyLocation/PhysicalAddress/City/text()'),
+        u'PhysicalStateProvince': partial(_xpath_join, 'AgencyLocation/PhysicalAddress/State/text()'),
+        u'PhysicalCountry': partial(_xpath_join, 'AgencyLocation/PhysicalAddress/Country/text()'),
+        u'PhysicalPostalCode': partial(_xpath_join, 'AgencyLocation/PhysicalAddress/ZipCode/text()'),
 
-        FieldMapping(39, u'MailingAddress1', partial(_addr_line_1_join, 'AgencyLocation/MailingAddress/*[self::PreAddressLine or self::Line1]/text()')),
-        FieldMapping(40, u'MailingAddress2', partial(_xpath_join, 'AgencyLocation/MailingAddress/Line2/text()')),
-        FieldMapping(41, u'MailingCity', partial(_xpath_join, 'AgencyLocation/MailingAddress/City/text()')),
-        FieldMapping(43, u'MailingPostalCode', partial(_xpath_join, 'AgencyLocation/MailingAddress/ZipCode/text()')),
-        FieldMapping(44, u'MailingCountry', partial(_xpath_join, 'AgencyLocation/MailingAddress/Country/text()')),
-        FieldMapping(45, u'MailingStateProvince', partial(_xpath_join, 'AgencyLocation/MailingAddress/State/text()')),
-        FieldMapping(81, u'InternalNotesForEditorsAndViewers', partial(_xpath_join, 'InternalNote/text()')),
-    ],
-    u'Site': [
-        FieldMapping(1, u'AgencyNamePublic', partial(_xpath_join, 'Name/text()')),
-        FieldMapping(4, u'AgencyNameAlternate', partial(_xpath_join, 'AKA/Name/text()')),
-        FieldMapping(25, u'PhysicalAddress1', partial(_addr_line_1_join, 'PhysicalAddress/*[self::PreAddressLine or self::Line1]/text()')),
-        FieldMapping(26, u'PhysicalAddress2', partial(_xpath_join, 'PhysicalAddress/Line2/text()')),
-        FieldMapping(28, u'PhysicalCity', partial(_xpath_join, 'PhysicalAddress/City/text()')),
-        FieldMapping(30, u'PhysicalStateProvince', partial(_xpath_join, 'PhysicalAddress/State/text()')),
-        FieldMapping(31, u'PhysicalCountry', partial(_xpath_join, 'PhysicalAddress/Country/text()')),
-        FieldMapping(32, u'PhysicalPostalCode', partial(_xpath_join, 'PhysicalAddress/ZipCode/text()')),
+        u'MailingAddress1': partial(_addr_line_1_join, 'AgencyLocation/MailingAddress/*[self::PreAddressLine or self::Line1]/text()'),
+        u'MailingAddress2': partial(_xpath_join, 'AgencyLocation/MailingAddress/Line2/text()'),
+        u'MailingCity': partial(_xpath_join, 'AgencyLocation/MailingAddress/City/text()'),
+        u'MailingPostalCode': partial(_xpath_join, 'AgencyLocation/MailingAddress/ZipCode/text()'),
+        u'MailingCountry': partial(_xpath_join, 'AgencyLocation/MailingAddress/Country/text()'),
+        u'MailingStateProvince': partial(_xpath_join, 'AgencyLocation/MailingAddress/State/text()'),
 
-        FieldMapping(39, u'MailingAddress1', partial(_addr_line_1_join, 'MailingAddress/*[self::PreAddressLine or self::Line1]/text()')),
-        FieldMapping(40, u'MailingAddress2', partial(_xpath_join, 'MailingAddress/Line2/text()')),
-        FieldMapping(41, u'MailingCity', partial(_xpath_join, 'MailingAddress/City/text()')),
-        FieldMapping(43, u'MailingPostalCode', partial(_xpath_join, 'MailingAddress/ZipCode/text()')),
-        FieldMapping(44, u'MailingCountry', partial(_xpath_join, 'MailingAddress/Country/text()')),
-        FieldMapping(45, u'MailingStateProvince', partial(_xpath_join, 'MailingAddress/State/text()')),
+        u'InternalNotesForEditorsAndViewers': partial(_xpath_join, 'InternalNote/text()'),
+        u'InternalNote': partial(_xpath_join, 'EditorsNote/text()'),
+        u'Custom_PublicComments': partial(_xpath_join, 'PublicNote/text()'),
+        u'Custom_FormerNames': partial(_translated_type_xpath, _('Former Name'), 'AKA/Description[starts-with(text(), "%s")]/../Name/text()'),
+        u'Custom_LegalNames': partial(_translated_type_xpath, _('Legal Name'), 'AKA/Description[starts-with(text(), "%s")]/../Name/text()'),
+    },
+    u'Site': {
+        u'AgencyNamePublic': partial(_xpath_join, 'Name/text()'),
+        u'AgencyNameAlternate': partial(_translated_type_xpath, [_('Legal Name'), _('Former Name')], 'AKA[not(./Description) or not(starts-with(./Description,"%s") or starts-with(./Description,"%s"))]/Name/text()'),
+        u'PhysicalAddress1': partial(_addr_line_1_join, 'PhysicalAddress/*[self::PreAddressLine or self::Line1]/text()'),
+        u'PhysicalAddress2': partial(_xpath_join, 'PhysicalAddress/Line2/text()'),
+        u'PhysicalCity': partial(_xpath_join, 'PhysicalAddress/City/text()'),
+        u'PhysicalStateProvince': partial(_xpath_join, 'PhysicalAddress/State/text()'),
+        u'PhysicalCountry': partial(_xpath_join, 'PhysicalAddress/Country/text()'),
+        u'PhysicalPostalCode': partial(_xpath_join, 'PhysicalAddress/ZipCode/text()'),
+
+        u'MailingAddress1': partial(_addr_line_1_join, 'MailingAddress/*[self::PreAddressLine or self::Line1]/text()'),
+        u'MailingAddress2': partial(_xpath_join, 'MailingAddress/Line2/text()'),
+        u'MailingCity': partial(_xpath_join, 'MailingAddress/City/text()'),
+        u'MailingPostalCode': partial(_xpath_join, 'MailingAddress/ZipCode/text()'),
+        u'MailingCountry': partial(_xpath_join, 'MailingAddress/Country/text()'),
+        u'MailingStateProvince': partial(_xpath_join, 'MailingAddress/State/text()'),
 
 
-        FieldMapping(46, u'PhoneTollFree', partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()')),
-        FieldMapping(47, u'PhoneNumberHotline', partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Crisis"]/PhoneNumber/text()')),
-        FieldMapping(49, u'PhoneNumberAfterHours', partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "After Hours"]/PhoneNumber/text()')),
-        FieldMapping(50, u'PhoneNumberBusinessLine', partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Office"]/PhoneNumber/text()')),
-        FieldMapping(51, u'PhoneFax', partial(_xpath_join, 'Phone[./Type/text() = "Fax"]/PhoneNumber/text()')),
-        FieldMapping(52, u'PhoneTTY', partial(_xpath_join, 'Phone[./Type/text() = "TTY/TDD"]/PhoneNumber/text()')),
+        u'PhoneTollFree': partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()'),
+        u'PhoneNumberHotline': partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Crisis"]/PhoneNumber/text()'),
+        u'PhoneNumberAfterHours': partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "After Hours"]/PhoneNumber/text()'),
+        u'PhoneNumberBusinessLine': partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Office"]/PhoneNumber/text()'),
+        u'PhoneFax': partial(_xpath_join, 'Phone[./Type/text() = "Fax"]/PhoneNumber/text()'),
+        u'PhoneTTY': partial(_xpath_join, 'Phone[./Type/text() = "TTY/TDD"]/PhoneNumber/text()'),
 
-        FieldMapping(59, u'WebsiteAddress', partial(_xpath_join, 'URL/Address/text()')),
-        FieldMapping(58, u'EmailAddressMain', partial(_xpath_join, 'Email/Address/text()')),
+        u'WebsiteAddress': partial(_xpath_join, 'URL/Address/text()'),
+        u'EmailAddressMain': partial(_xpath_join, 'Email/Address/text()'),
 
-        FieldMapping(61, u'MainContactTitle', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Title/text()')),
-        FieldMapping(60, u'MainContactName', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Name/text()')),
-        FieldMapping(62, u'MainContactPhoneNumber', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Phone/PhoneNumber/text()')),
-        FieldMapping(63, u'MainContactEmailAddress', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Email/Address/text()')),
+        u'MainContactTitle': partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Title/text()'),
+        u'MainContactName': partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Name/text()'),
+        u'MainContactPhoneNumber': partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Phone/PhoneNumber/text()'),
+        u'MainContactEmailAddress': partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Email/Address/text()'),
 
-        FieldMapping(36, u'DisabilitiesAccess', partial(_xpath_join, 'DisabilitiesAccess/text()')),
-        FieldMapping(34, u'HoursOfOperation', partial(_xpath_join, 'TimeOpen/Notes/text()')),
+        u'DisabilitiesAccess': partial(_xpath_join, 'DisabilitiesAccess/text()'),
+        u'HoursOfOperation': partial(_xpath_join, 'TimeOpen/Notes/text()'),
 
-        FieldMapping(5, u'AgencyDescription', partial(_xpath_join, 'SiteDescription/text()')),
-        FieldMapping(35, u'PhysicalLocationDescription', _physical_location_description),
+        u'AgencyDescription': partial(_xpath_join, 'SiteDescription/text()'),
+        u'PhysicalLocationDescription': _physical_location_description,
 
-        FieldMapping(13, u'LanguagesOffered', _languages_offered),
-        FieldMapping(81, u'InternalNotesForEditorsAndViewers', partial(_xpath_join, 'InternalNote/text()')),
-    ],
-    u'SiteService': [
-        FieldMapping(1, u'AgencyNamePublic', partial(_xpath_join, 'Name/text()')),
-        FieldMapping(4, u'AgencyNameAlternate', partial(_xpath_join, 'AKA/Name/text()')),
-        FieldMapping(5, u'AgencyDescription', partial(_xpath_join, 'Description/text()')),
+        u'LanguagesOffered': _languages_offered,
+        u'InternalNotesForEditorsAndViewers': partial(_xpath_join, 'InternalNote/text()'),
+        u'InternalNote': partial(_xpath_join, 'EditorsNote/text()'),
+        u'Custom_PublicComments': partial(_xpath_join, 'PublicNote/text()'),
+        u'Custom_FormerNames': partial(_translated_type_xpath, _('Former Name'), 'AKA/Description[starts-with(text(), "%s")]/../Name/text()'),
+        u'Custom_LegalNames': partial(_translated_type_xpath, _('Legal Name'), 'AKA/Description[starts-with(text(), "%s")]/../Name/text()'),
+    },
+    u'SiteService': {
+        u'AgencyNamePublic': partial(_xpath_join, 'Name/text()'),
+        u'AgencyNameAlternate': partial(_translated_type_xpath, [_('Legal Name'), _('Former Name')], 'AKA[not(./Description) or not(starts-with(./Description,"%s") or starts-with(./Description,"%s"))]/Name/text()'),
+        u'AgencyDescription': partial(_xpath_join, 'Description/text()'),
 
-        FieldMapping(46, u'PhoneTollFree', partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()')),
-        FieldMapping(47, u'PhoneNumberHotline', partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Crisis"]/PhoneNumber/text()')),
-        FieldMapping(49, u'PhoneNumberAfterHours', partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "After Hours"]/PhoneNumber/text()')),
-        FieldMapping(50, u'PhoneNumberBusinessLine', partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Office"]/PhoneNumber/text()')),
-        FieldMapping(51, u'PhoneFax', partial(_xpath_join, 'Phone[./Type/text() = "Fax"]/PhoneNumber/text()')),
-        FieldMapping(52, u'PhoneTTY', partial(_xpath_join, 'Phone[./Type/text() = "TTY/TDD"]/PhoneNumber/text()')),
+        u'PhoneTollFree': partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()'),
+        u'PhoneNumberHotline': partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Crisis"]/PhoneNumber/text()'),
+        u'PhoneNumberAfterHours': partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "After Hours"]/PhoneNumber/text()'),
+        u'PhoneNumberBusinessLine': partial(_xpath_join, 'Phone[./Type/text() = "Voice" and ./Description/text() = "Office"]/PhoneNumber/text()'),
+        u'PhoneFax': partial(_xpath_join, 'Phone[./Type/text() = "Fax"]/PhoneNumber/text()'),
+        u'PhoneTTY': partial(_xpath_join, 'Phone[./Type/text() = "TTY/TDD"]/PhoneNumber/text()'),
 
-        FieldMapping(59, u'WebsiteAddress', partial(_xpath_join, 'URL/Address/text()')),
-        FieldMapping(58, u'EmailAddressMain', partial(_xpath_join, 'Email/Address/text()')),
+        u'WebsiteAddress': partial(_xpath_join, 'URL/Address/text()'),
+        u'EmailAddressMain': partial(_xpath_join, 'Email/Address/text()'),
 
-        FieldMapping(24, u'CoverageArea', partial(_xpath_join, 'GeographicAreaServed/Description/text()')),
+        u'CoverageArea': partial(_xpath_join, 'GeographicAreaServed/Description/text()'),
 
-        FieldMapping(61, u'MainContactTitle', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Title/text()')),
-        FieldMapping(60, u'MainContactName', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Name/text()')),
-        FieldMapping(62, u'MainContactPhoneNumber', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Phone/PhoneNumber/text()')),
-        FieldMapping(63, u'MainContactEmailAddress', partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Email/Address/text()')),
+        u'MainContactTitle': partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Title/text()'),
+        u'MainContactName': partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Name/text()'),
+        u'MainContactPhoneNumber': partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Phone/PhoneNumber/text()'),
+        u'MainContactEmailAddress': partial(_translated_type_xpath, _('Primary Contact'), 'Contact[@Type = "%s"]/Email/Address/text()'),
 
-        FieldMapping(68, u'LastVerifiedOn', partial(_xpath_join, 'ResourceInfo/@DateLastVerified')),
-        FieldMapping(69, u'LastVerifiedByName', partial(_xpath_join, 'ResourceInfo/Contact/Name/text()')),
-        FieldMapping(70, u'LastVerifiedByTitle', partial(_xpath_join, 'ResourceInfo/Contact/Title/text()')),
-        FieldMapping(71, u'LastVerifiedByEmailAddress', partial(_xpath_join, 'ResourceInfo/Contact/Email/Address/text()')),
-        FieldMapping(72, u'LastVerifiedByPhoneNumber', partial(_xpath_join, 'ResourceInfo/Contact/Phone[Type/text() = "Voice"]/PhoneNumber/text()')),
+        u'LastVerifiedOn': partial(_xpath_join, 'ResourceInfo/@DateLastVerified'),
+        u'LastVerifiedByName': partial(_xpath_join, 'ResourceInfo/Contact/Name/text()'),
+        u'LastVerifiedByTitle': partial(_xpath_join, 'ResourceInfo/Contact/Title/text()'),
+        u'LastVerifiedByEmailAddress': partial(_xpath_join, 'ResourceInfo/Contact/Email/Address/text()'),
+        u'LastVerifiedByPhoneNumber': partial(_xpath_join, 'ResourceInfo/Contact/Phone[Type/text() = "Voice"]/PhoneNumber/text()'),
 
-        FieldMapping(14, u'FeeStructureSource', partial(_xpath_join, 'FeeStructure/text()')),
-        FieldMapping(15, u'ApplicationProcess', partial(_xpath_join, 'ApplicationProcess/Description/text()')),
-        FieldMapping(13, u'LanguagesOffered', _languages_offered),
-        FieldMapping(81, u'InternalNotesForEditorsAndViewers', partial(_xpath_join, 'InternalNote/text()')),
-        FieldMapping(11, u'Eligibility', _eligibility),
-        FieldMapping(34, u'HoursOfOperation', partial(_xpath_join, 'TimeOpen/Notes/text()')),
+        u'FeeStructureSource': partial(_xpath_join, 'FeeStructure/text()'),
+        u'ApplicationProcess': partial(_xpath_join, 'ApplicationProcess/Description/text()'),
+        u'LanguagesOffered': _languages_offered,
+        u'InternalNotesForEditorsAndViewers': partial(_xpath_join, 'InternalNote/text()'),
+        u'InternalNote': partial(_xpath_join, 'EditorsNote/text()'),
+        u'Custom_PublicComments': partial(_xpath_join, 'PublicNote/text()'),
+        u'Eligibility': _eligibility,
+        u'HoursOfOperation': partial(_xpath_join, 'TimeOpen/Notes/text()'),
+        u'Custom_FormerNames': partial(_translated_type_xpath, _('Former Name'), 'AKA/Description[starts-with(text(), "%s")]/../Name/text()'),
+        u'Custom_LegalNames': partial(_translated_type_xpath, _('Legal Name'), 'AKA/Description[starts-with(text(), "%s")]/../Name/text()'),
 
-    ]
+    }
 
 
 }
+_header_prefix = ['AgencyNUM', 'NUM', 'Record Type', 'CultureCode']
+
+# Get all keys from dictionary
+_field_order = [key for entry in _airs_type_mapping.values() for key in entry.keys()]
+
+# Remove duplicates and place required elements at the end of the list
+_last_items = ['Custom_PublicComments', 'Custom_FormerNames', 'Custom_LegalNames']
+_field_order = list(sorted(set(_field_order), key=_sort_fn))
+
+_header_row = _header_prefix + _field_order
+
 del _
 
 _tag_to_type_map = {

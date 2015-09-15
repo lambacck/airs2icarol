@@ -19,22 +19,22 @@
         <AKA>
             <Name>FORMER_ORG 1 [French]</Name>
             <Confidential>false</Confidential>
-            <Description>Former Name : 2001</Description>
+            <Description>Nom antérieur : 2001</Description>
         </AKA>
         <AKA>
             <Name>FORMER_ORG 2 [French]</Name>
             <Confidential>false</Confidential>
-            <Description>Former Name : 2008</Description>
+            <Description>Nom antérieur : 2008</Description>
         </AKA>
         <AKA>
             <Name>FORMER_ORG 3 [French]</Name>
             <Confidential>false</Confidential>
-            <Description>Former Name</Description>
+            <Description>Nom antérieur</Description>
         </AKA>
         <AKA>
             <Name>LEGAL_ORG [French]</Name>
             <Confidential>false</Confidential>
-            <Description>Legal Name</Description>
+            <Description>Dénomination sociale</Description>
         </AKA>
         <AgencyLocation ExcludeFromWebsite="true" ExcludeFromDirectory="true">
             <Key>ZZZ99990</Key>
@@ -161,17 +161,17 @@
             <AKA>
                 <Name>FORMER_ORG 1 [French]</Name>
                 <Confidential>false</Confidential>
-                <Description>Former Name : 2001</Description>
+                <Description>Nom antérieur : 2001</Description>
             </AKA>
             <AKA>
                 <Name>FORMER_ORG 2 [French]</Name>
                 <Confidential>false</Confidential>
-                <Description>Former Name : 2008</Description>
+                <Description>Nom antérieur : 2008</Description>
             </AKA>
             <AKA>
                 <Name>FORMER_ORG 3 [French]</Name>
                 <Confidential>false</Confidential>
-                <Description>Former Name</Description>
+                <Description>Nom antérieur</Description>
             </AKA>
             <AKA>
                 <Name>LEGAL_ORG [French]</Name>
@@ -312,17 +312,17 @@ Dates : DATES [French]</Notes>
                 <AKA>
                     <Name>FORMER_ORG 1 [French]</Name>
                     <Confidential>false</Confidential>
-                    <Description>Former Name : 2001</Description>
+                    <Description>Nom antérieur : 2001</Description>
                 </AKA>
                 <AKA>
                     <Name>FORMER_ORG 2 [French]</Name>
                     <Confidential>false</Confidential>
-                    <Description>Former Name : 2008</Description>
+                    <Description>Nom antérieur : 2008</Description>
                 </AKA>
                 <AKA>
                     <Name>FORMER_ORG 3 [French]</Name>
                     <Confidential>false</Confidential>
-                    <Description>Former Name</Description>
+                    <Description>Nom antérieur</Description>
                 </AKA>
                 <AKA>
                     <Name>LEGAL_ORG [French]</Name>
