@@ -203,18 +203,19 @@ def _convert_part(error_log, processed, iterable, root, tagname, culture=None, a
 
             # iterate over mapping definitions
 
-            rows = [agencynum or '', key, record_type, culture]
+            row = [agencynum or '', key, record_type, culture]
             type_mapping = _airs_type_mapping[tagname]
             for item in _field_order:
                 try:
                     fn = type_mapping[item]
-                    value = fn(element, joinstr=joinstr, _=_)
                 except KeyError:
                     value = ''
+                else:
+                    value = fn(element, joinstr=joinstr, _=_)
                 value = (value or '').strip()
-                rows.append(value)
+                row.append(value)
 
-            yield rows
+            yield row
 
             # NOTE this return must happen on the end event when element is root
             return
@@ -302,12 +303,12 @@ def _addr_line_1_join(xpath, root_element, joinstr=u'; ', _=None):
 
 def _translated_type_xpath(translate_phrase, xpath, root_element, joinstr=u'; ', _=None):
     if isinstance(translate_phrase, basestring):
-        new_translate_phrase = [translate_phrase]
+        translate_phrase = [translate_phrase]
     else:
-        new_translate_phrase = translate_phrase
+        translate_phrase = translate_phrase
     if _ is not None:
-        new_translate_phrase = [_(element) for element in new_translate_phrase]
-    new_xpath = xpath % tuple(new_translate_phrase)
+        translate_phrase = [_(element) for element in translate_phrase]
+    new_xpath = xpath % tuple(translate_phrase)
     return _xpath_join(new_xpath, root_element, joinstr, _)
 
 
@@ -322,7 +323,7 @@ _airs_type_mapping = {
     u'Source': {},
     u'Agency': {
         u'AgencyNamePublic': partial(_xpath_join, 'Name/text()'),
-        u'AgencyNameAlternate': partial(_translated_type_xpath, [_('Legal Name'),_('Former Name')], 'AKA[not(./Description) or not(starts-with(./Description,"%s") or starts-with(./Description,"%s"))]/Name/text()'),
+        u'AgencyNameAlternate': partial(_translated_type_xpath, [_('Legal Name'), _('Former Name')], 'AKA[not(./Description) or not(starts-with(./Description,"%s") or starts-with(./Description,"%s"))]/Name/text()'),
         u'AgencyDescription': partial(_xpath_join, 'AgencyDescription/text()'),
 
         u'PhoneTollFree': partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()'),
@@ -372,7 +373,7 @@ _airs_type_mapping = {
     },
     u'Site': {
         u'AgencyNamePublic': partial(_xpath_join, 'Name/text()'),
-        u'AgencyNameAlternate': partial(_translated_type_xpath, [_('Legal Name'),_('Former Name')], 'AKA[not(./Description) or not(starts-with(./Description,"%s") or starts-with(./Description,"%s"))]/Name/text()'),
+        u'AgencyNameAlternate': partial(_translated_type_xpath, [_('Legal Name'), _('Former Name')], 'AKA[not(./Description) or not(starts-with(./Description,"%s") or starts-with(./Description,"%s"))]/Name/text()'),
         u'PhysicalAddress1': partial(_addr_line_1_join, 'PhysicalAddress/*[self::PreAddressLine or self::Line1]/text()'),
         u'PhysicalAddress2': partial(_xpath_join, 'PhysicalAddress/Line2/text()'),
         u'PhysicalCity': partial(_xpath_join, 'PhysicalAddress/City/text()'),
@@ -418,7 +419,7 @@ _airs_type_mapping = {
     },
     u'SiteService': {
         u'AgencyNamePublic': partial(_xpath_join, 'Name/text()'),
-        u'AgencyNameAlternate': partial(_translated_type_xpath, [_('Legal Name'),_('Former Name')], 'AKA[not(./Description) or not(starts-with(./Description,"%s") or starts-with(./Description,"%s"))]/Name/text()'),
+        u'AgencyNameAlternate': partial(_translated_type_xpath, [_('Legal Name'), _('Former Name')], 'AKA[not(./Description) or not(starts-with(./Description,"%s") or starts-with(./Description,"%s"))]/Name/text()'),
         u'AgencyDescription': partial(_xpath_join, 'Description/text()'),
 
         u'PhoneTollFree': partial(_xpath_join, 'Phone[@TollFree = "true" and ./Type/text() = "Voice" and ./Description/text() = "Toll Free"]/PhoneNumber/text()'),
@@ -466,7 +467,7 @@ _field_order = [key for entry in _airs_type_mapping.values() for key in entry.ke
 
 # Remove duplicates and place required elements at the end of the list
 _last_items = ['Custom_PublicComments', 'Custom_FormerNames', 'Custom_LegalNames']
-_field_order = sorted(list(set(_field_order)), key=_sort_fn)
+_field_order = list(sorted(set(_field_order), key=_sort_fn))
 
 _header_row = _header_prefix + _field_order
 
