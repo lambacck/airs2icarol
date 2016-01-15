@@ -3,6 +3,11 @@
 History
 -------
 
+0.5.0 (2016-01-14)
+---------------------
+
+ * Ensure AgencyNUM is populated even for Agency records
+
 0.4.0 (2015-09-14)
 ---------------------
 

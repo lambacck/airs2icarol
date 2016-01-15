@@ -203,7 +203,7 @@ def _convert_part(error_log, processed, iterable, root, tagname, culture=None, a
 
             # iterate over mapping definitions
 
-            row = [agencynum or '', key, record_type, culture]
+            row = [agencynum or key, key, record_type, culture]
             type_mapping = _airs_type_mapping[tagname]
             for item in _field_order:
                 try:
