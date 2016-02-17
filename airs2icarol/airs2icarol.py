@@ -8,6 +8,7 @@ import tempfile
 import itertools
 import os
 import gettext
+import csv
 try:
     from pkg_resources import resource_filename
 except ImportError:
@@ -225,6 +226,8 @@ def _write_csv(csvfile, data, **kwargs):
     # required to have all spreadsheet programs
     # understand Unicode
     csvfile.write(codecs.BOM_UTF8)
+
+    kwargs['quoting'] = csv.QUOTE_ALL
 
     csvwriter = UTF8CSVWriter(csvfile, **kwargs)
 
